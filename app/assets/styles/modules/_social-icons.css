@@ -1,5 +1,7 @@
 .social-icons {
+  position: absolute;
   text-align: left;
+  bottom: 0;
 
   &__icon {
     display: inline-block;

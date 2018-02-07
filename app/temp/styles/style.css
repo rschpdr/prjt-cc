@@ -451,8 +451,8 @@ template {
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  color: #333;
+  font-family: 'Open Sans', sans-serif;
+  color: #333333;
 }
 
 img {
@@ -463,10 +463,6 @@ img {
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-}
-
-a {
-  color: #d59541;
 }
 
 /* Do not edit modules/_sprite directly as it is generated automatically by Gulp. Instead edit gulp/templates/sprite */
@@ -504,7 +500,9 @@ a {
   }
 
 .social-icons {
+  position: absolute;
   text-align: left;
+  bottom: 0;
 }
 
 .social-icons__icon {
@@ -524,3 +522,30 @@ a {
       display: block;
       position: absolute;
     }
+
+.wrapper {
+
+  margin: 6.25rem 6.25rem 3.125rem  6.25rem;
+
+}
+
+.sidebar {
+
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.sidebar__logo {
+
+    margin-left: 0.9375rem;
+
+  }
+
+.sidebar-wrapper {
+
+  position: fixed;
+  height: 100%;
+  width: 25%;
+
+}
