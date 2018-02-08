@@ -3,5 +3,6 @@
   position: fixed;
   height: 100%;
   width: 25%;
+  margin-bottom: inherit;
 
 }

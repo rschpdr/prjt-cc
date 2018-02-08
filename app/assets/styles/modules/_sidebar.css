@@ -6,7 +6,16 @@
 
   &__logo {
 
-    margin-left: 0.9375rem;
+    margin-left: 1.25rem;
+
+  }
+
+  &__menu {
+
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
   }
 }

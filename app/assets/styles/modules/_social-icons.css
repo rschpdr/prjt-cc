@@ -1,7 +1,9 @@
 .social-icons {
   position: absolute;
   text-align: left;
-  bottom: 0;
+  bottom: $socialIconHeight;
+  margin-bottom: 3.125rem;
+  margin-left: 1.25rem;
 
   &__icon {
     display: inline-block;

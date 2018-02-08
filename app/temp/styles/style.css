@@ -502,7 +502,9 @@ img {
 .social-icons {
   position: absolute;
   text-align: left;
-  bottom: 0;
+  bottom: calc(6.25rem + 2rem);
+  margin-bottom: 3.125rem;
+  margin-left: 1.25rem;
 }
 
 .social-icons__icon {
@@ -525,7 +527,7 @@ img {
 
 .wrapper {
 
-  margin: 6.25rem 6.25rem 3.125rem  6.25rem;
+  margin: 6.25rem 6.25rem 0 6.25rem;
 
 }
 
@@ -538,7 +540,23 @@ img {
 
 .sidebar__logo {
 
-    margin-left: 0.9375rem;
+    margin-left: 1.25rem;
+
+  }
+
+.sidebar__menu {
+
+    position: absolute;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 
   }
 
@@ -547,5 +565,6 @@ img {
   position: fixed;
   height: 100%;
   width: 25%;
+  margin-bottom: inherit;
 
 }
