@@ -1,6 +1,6 @@
 body {
   font-family: 'Open Sans', sans-serif;
-  color: #333333;
+  color: $mainDarkGray;
 }
 
 img {
@@ -10,4 +10,9 @@ img {
 
 * {
   box-sizing: border-box;
+}
+
+li > a {
+  text-decoration: none;
+  color: $mainDarkGray;
 }

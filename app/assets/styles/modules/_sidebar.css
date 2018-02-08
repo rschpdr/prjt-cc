@@ -13,9 +13,13 @@
   &__menu {
 
     position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    top: 40%;
+    transform: translateY(-50%);
+
+    ul {
+      list-style: none;
+      line-height: 2.4;
+    }
 
   }
 }

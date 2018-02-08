@@ -465,6 +465,11 @@ img {
           box-sizing: border-box;
 }
 
+li > a {
+  text-decoration: none;
+  color: #333333;
+}
+
 /* Do not edit modules/_sprite directly as it is generated automatically by Gulp. Instead edit gulp/templates/sprite */
 
 .icon {
@@ -547,18 +552,16 @@ img {
 .sidebar__menu {
 
     position: absolute;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    top: 40%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
 
   }
+
+.sidebar__menu ul {
+      list-style: none;
+      line-height: 2.4;
+    }
 
 .sidebar-wrapper {
 
@@ -566,5 +569,11 @@ img {
   height: 100%;
   width: 25%;
   margin-bottom: inherit;
+
+}
+
+.row {
+
+  width: 100%;
 
 }
