@@ -517,7 +517,7 @@ li > a {
     position: relative;
   }
 
-@media (min-width: 530px) {
+@media (min-width: 455px) {
 
 .social-icons__icon {
       width: 32px;
@@ -530,63 +530,102 @@ li > a {
       position: absolute;
     }
 
-.wrapper {
+@media (min-width: 1010px) {
 
-  margin: 4.25rem 4.25rem 0 4.25rem;
+.wrapper {
+    margin: 4.25rem 4.25rem 0 4.25rem
 
 }
+  }
+
+@media (min-width: 1010px) {
 
 .sidebar {
 
-  position: relative;
-  height: 100%;
-  width: 100%;
+    position: relative;
+    height: 100%;
+    width: 100%
+
 }
 
-.sidebar__logo {
+    .sidebar__logo {
 
-    margin-left: 1.25rem;
+      margin-left: 1.25rem;
 
-  }
-
-.sidebar__menu {
-
-    position: absolute;
-    top: 40%;
-    -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
-
-  }
-
-.sidebar__menu ul {
-      list-style: none;
-      line-height: 2.4;
     }
+
+    .sidebar__menu {
+
+      position: absolute;
+      top: 40%;
+      -webkit-transform: translateY(-50%);
+              transform: translateY(-50%);
+
+    }
+
+      .sidebar__menu ul {
+        list-style: none;
+        line-height: 2.4;
+      }
+  }
 
 .sidebar-wrapper {
 
-  position: fixed;
-  height: 100%;
-  width: 25%;
-  margin-bottom: inherit;
+  display: none;
 
 }
+
+@media (min-width: 1010px) {
+
+.sidebar-wrapper {
+
+    display: block;
+    position: fixed;
+    height: 100%;
+    width: 25%;
+    margin-bottom: inherit
+
+}
+  }
+
+@media (min-width: 1010px) {
 
 .content {
-  margin-left: 25%;
+    margin-left: 25%
+
 }
+  }
 
 .row {
 
   width: 100%;
-  white-space: nowrap;
 
 }
 
-.column__large-4 {
-       
-      width: 33.3333%;
-      display: inline-block;
-      padding: 5px;
-      
-    }
+.column {
+  width: 100%;
+  display: inline-block;
+
+}
+
+@media (min-width: 455px) {
+
+      .column__medium-6 {
+
+        float: left; 
+        width: 50%;
+        padding: 5px;
+
+      }
+  }
+
+@media (min-width: 1010px) {
+
+      .column__large-4 {
+
+        float: left;
+        width: 33.3332%;
+        padding: 5px;
+
+      }
+  }

@@ -1,3 +1,7 @@
 .content {
-  margin-left: 25%;
+
+  @mixin atLarge {
+    margin-left: 25%;     
+  }
+
 }

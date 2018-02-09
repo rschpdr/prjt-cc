@@ -1,7 +1,7 @@
 @import "normalize.css";
 @import "base/_variables";
-@import "base/_global";
 @import "base/_mixins";
+@import "base/_global";
 @import "modules/_sprite";
 @import "modules/_social-icons";
 @import "modules/_wrapper";

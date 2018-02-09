@@ -1,8 +1,15 @@
 .sidebar-wrapper {
 
-  position: fixed;
-  height: 100%;
-  width: 25%;
-  margin-bottom: inherit;
+  display: none;
+
+  @mixin atLarge {
+
+    display: block;
+    position: fixed;
+    height: 100%;
+    width: 25%;
+    margin-bottom: inherit;
+
+  }
 
 }

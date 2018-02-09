@@ -1,11 +1,29 @@
 .column {
-    
-    &__large-4 {
-       
-      width: 33.3333%;
-      display: inline-block;
-      padding: 5px;
-      
+  width: 100%;
+  display: inline-block;
+
+    @mixin atSmall {
+
+      &__medium-6 {
+
+        float: left; 
+        width: 50%;
+        padding: 5px;
+
+      }
+
+    }
+
+    @mixin atLarge {
+
+      &__large-4 {
+
+        float: left;
+        width: 33.3332%;
+        padding: 5px;
+
+      }
+
     }
 
 }

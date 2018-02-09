@@ -1,5 +1,7 @@
 .wrapper {
 
-  margin: $wrapperMargin $wrapperMargin 0 $wrapperMargin;
+  @mixin atLarge {
+    margin: $wrapperMargin $wrapperMargin 0 $wrapperMargin;
+  }
 
 }

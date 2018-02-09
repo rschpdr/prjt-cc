@@ -1,25 +1,30 @@
 .sidebar {
 
-  position: relative;
-  height: 100%;
-  width: 100%;
+  @mixin atLarge {
 
-  &__logo {
+    position: relative;
+    height: 100%;
+    width: 100%;
 
-    margin-left: 1.25rem;
+    &__logo {
 
-  }
+      margin-left: 1.25rem;
 
-  &__menu {
+    }
 
-    position: absolute;
-    top: 40%;
-    transform: translateY(-50%);
+    &__menu {
 
-    ul {
-      list-style: none;
-      line-height: 2.4;
+      position: absolute;
+      top: 40%;
+      transform: translateY(-50%);
+
+      ul {
+        list-style: none;
+        line-height: 2.4;
+      }
+
     }
 
   }
+
 }
