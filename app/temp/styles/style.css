@@ -507,7 +507,7 @@ li > a {
 .social-icons {
   position: absolute;
   text-align: left;
-  bottom: calc(6.25rem + 2rem);
+  bottom: calc(4.25rem + 2rem);
   margin-bottom: 3.125rem;
   margin-left: 1.25rem;
 }
@@ -532,7 +532,7 @@ li > a {
 
 .wrapper {
 
-  margin: 6.25rem 6.25rem 0 6.25rem;
+  margin: 4.25rem 4.25rem 0 4.25rem;
 
 }
 
@@ -572,8 +572,21 @@ li > a {
 
 }
 
+.content {
+  margin-left: 25%;
+}
+
 .row {
 
   width: 100%;
+  white-space: nowrap;
 
 }
+
+.column__large-4 {
+       
+      width: 33.3333%;
+      display: inline-block;
+      padding: 5px;
+      
+    }
