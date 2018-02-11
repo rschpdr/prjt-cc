@@ -1,3 +1,4 @@
 $mainDarkGray: #333333;
 $wrapperMargin: 4.25rem;
+$smallMargin: calc($wrapperMargin - 2rem);
 $socialIconHeight: calc($wrapperMargin + 2rem);

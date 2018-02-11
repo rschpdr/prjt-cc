@@ -1,6 +1,7 @@
 .column {
   width: 100%;
   display: inline-block;
+  padding-bottom: 3.75rem;
 
     @mixin atSmall {
 

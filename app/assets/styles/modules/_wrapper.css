@@ -1,4 +1,8 @@
 .wrapper {
+  
+  @mixin atSmall {
+    margin: $smallMargin $smallMargin 0 $smallMargin;
+  }
 
   @mixin atLarge {
     margin: $wrapperMargin $wrapperMargin 0 $wrapperMargin;
