@@ -2,6 +2,25 @@
 
   @mixin atLarge {
     margin-left: 25%;     
+  
+  &__description {
+    padding-top: 6.1875rem;
+  }
+  
+  &__title {
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: 400;
+    padding-bottom: 2.3750rem;
+  }
+  
+  &__paragraph {
+    font-size: 0.875rem;
+    padding-bottom: 5.75rem;
+  }
+  
+  
+  
   }
 
 }

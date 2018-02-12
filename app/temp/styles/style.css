@@ -470,6 +470,10 @@ li > a {
   color: #333333;
 }
 
+ul, p {
+  line-height: 2.4;
+}
+
 /* Do not edit modules/_sprite directly as it is generated automatically by Gulp. Instead edit gulp/templates/sprite */
 
 .icon {
@@ -573,7 +577,6 @@ li > a {
 
       .sidebar__menu ul {
         list-style: none;
-        line-height: 2.4;
       }
   }
 
@@ -601,7 +604,23 @@ li > a {
 .content {
     margin-left: 25%
 
-}
+}     
+  
+  .content__description {
+    padding-top: 6.1875rem;
+  }
+  
+  .content__title {
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: 400;
+    padding-bottom: 2.3750rem;
+  }
+  
+  .content__paragraph {
+    font-size: 0.875rem;
+    padding-bottom: 5.75rem;
+  }
   }
 
 .row {

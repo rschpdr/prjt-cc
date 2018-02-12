@@ -16,3 +16,7 @@ li > a {
   text-decoration: none;
   color: $mainDarkGray;
 }
+
+ul, p {
+  line-height: 2.4;
+}
