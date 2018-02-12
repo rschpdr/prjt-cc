@@ -471,8 +471,14 @@ li > a {
 }
 
 ul, p {
-  line-height: 2.4;
+  line-height: 1.6;
 }
+
+@media (min-width: 800px) {
+  ul, p {
+    line-height: 2.4;
+  }
+  }
 
 /* Do not edit modules/_sprite directly as it is generated automatically by Gulp. Instead edit gulp/templates/sprite */
 
@@ -599,6 +605,21 @@ ul, p {
 }
   }
 
+.content__description {
+    padding:0 0.9375rem 3.75rem 0.9375rem;
+  }
+
+.content__title {
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: 400;
+    padding-bottom: 2.3750rem;
+  }
+
+.content__paragraph {
+    font-size: 0.875rem;
+  }
+
 @media (min-width: 1010px) {
 
 .content {
@@ -607,19 +628,11 @@ ul, p {
 }     
   
   .content__description {
-    padding-top: 6.1875rem;
+    padding:6.1875rem 0 5.75rem 0;
   }
   
   .content__title {
-    font-size: 1.25rem;
-    font-style: italic;
-    font-weight: 400;
     padding-bottom: 2.3750rem;
-  }
-  
-  .content__paragraph {
-    font-size: 0.875rem;
-    padding-bottom: 5.75rem;
   }
   }
 

@@ -1,10 +1,7 @@
 .content {
-
-  @mixin atLarge {
-    margin-left: 25%;     
   
   &__description {
-    padding-top: 6.1875rem;
+    padding:0 0.9375rem 3.75rem 0.9375rem;
   }
   
   &__title {
@@ -16,10 +13,18 @@
   
   &__paragraph {
     font-size: 0.875rem;
-    padding-bottom: 5.75rem;
+  }
+
+  @mixin atLarge {
+    margin-left: 25%;     
+  
+  &__description {
+    padding:6.1875rem 0 5.75rem 0;
   }
   
-  
+  &__title {
+    padding-bottom: 2.3750rem;
+  }
   
   }
 

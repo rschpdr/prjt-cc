@@ -18,5 +18,12 @@ li > a {
 }
 
 ul, p {
-  line-height: 2.4;
+  line-height: 1.6;
 }
+
+@mixin atMedium {
+  ul, p {
+    line-height: 2.4;
+  }
+}
+
