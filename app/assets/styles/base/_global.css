@@ -20,3 +20,12 @@ li > a {
 ul, p {
   line-height: 2.4;
 }
+
+hr {
+  display: inline;
+  width: 90px;
+  color: $mainDarkGray;
+  float: left;
+  padding-bottom: 2.8125rem;
+}
+
