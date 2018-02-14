@@ -489,7 +489,6 @@ hr {
     border-bottom: 0;  
     width: 90px;
     float: left;
-    margin-bottom: 2.8125rem;
 
   }
 
@@ -636,6 +635,10 @@ hr {
 
 .content__paragraph--less-padding {
       padding-bottom: 3.75rem;
+    }
+
+.content__paragraph--push-down {
+      margin-top: 90px;
     }
 
 @media (min-width: 1010px) {
