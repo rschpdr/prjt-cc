@@ -28,10 +28,14 @@ ul, p {
 }
 
   hr {
-    display: inline;
+    position: absolute;
+    display: block;
+    border-top: 1px solid $mainDarkGray;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;  
     width: 90px;
-    color: $mainDarkGray;
     float: left;
-    padding-bottom: 2.8125rem;
-  }
+    margin-bottom: 2.8125rem;
 
+  }

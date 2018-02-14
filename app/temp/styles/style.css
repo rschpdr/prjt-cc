@@ -481,11 +481,16 @@ ul, p {
   }
 
 hr {
-    display: inline;
+    position: absolute;
+    display: block;
+    border-top: 1px solid #333333;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;  
     width: 90px;
-    color: #333333;
     float: left;
-    padding-bottom: 2.8125rem;
+    margin-bottom: 2.8125rem;
+
   }
 
 /* Do not edit modules/_sprite directly as it is generated automatically by Gulp. Instead edit gulp/templates/sprite */
@@ -630,7 +635,7 @@ hr {
   }
 
 .content__paragraph--less-padding {
-      padding-bottom: 3.75rem; 
+      padding-bottom: 3.75rem;
     }
 
 @media (min-width: 1010px) {
@@ -638,12 +643,12 @@ hr {
 .content {
     margin-left: 25%
 
-}     
-  
+}
+
   .content__description {
     padding:6.1875rem 0 5.75rem 0;
   }
-  
+
   .content__title {
     padding-bottom: 2.3750rem;
   }
