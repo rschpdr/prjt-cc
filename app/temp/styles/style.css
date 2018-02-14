@@ -480,6 +480,14 @@ ul, p {
   }
   }
 
+hr {
+    display: inline;
+    width: 90px;
+    color: #333333;
+    float: left;
+    padding-bottom: 2.8125rem;
+  }
+
 /* Do not edit modules/_sprite directly as it is generated automatically by Gulp. Instead edit gulp/templates/sprite */
 
 .icon {
@@ -618,7 +626,12 @@ ul, p {
 
 .content__paragraph {
     font-size: 0.875rem;
+    padding-bottom: 5.75rem;
   }
+
+.content__paragraph--less-padding {
+      padding-bottom: 3.75rem; 
+    }
 
 @media (min-width: 1010px) {
 
