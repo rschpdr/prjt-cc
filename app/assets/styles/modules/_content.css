@@ -1,11 +1,13 @@
 .content {
   
-  &--gray-bg {
-    position: absolute;
-    margin-top: -$wrapperPadding; 
-    width: $contentWidth;
-    height: 100%;
-    background-color: $lightGray; 
+  @mixin atLarge {
+    &--gray-bg {
+      position: absolute;
+      margin-top: -$wrapperPadding; 
+      width: $contentWidth;
+      height: 100%;
+      background-color: $lightGray; 
+    }  
   }
 
   &__description {
