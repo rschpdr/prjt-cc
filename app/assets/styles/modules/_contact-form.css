@@ -1,0 +1,25 @@
+.contact-form {
+  padding-left: 7.5rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  input, textarea {
+    background-color: transparent;
+    display: block;
+    border-bottom: 1px solid $mediumGray;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    font-style: italic;
+    width: 19.3750rem;
+    margin-bottom: 1.75rem;
+    transition: border-bottom 0.2s linear;
+    
+    &:focus {
+      outline: none;
+      border-bottom: 3px solid $mediumGray;
+    }
+  }
+   
+}

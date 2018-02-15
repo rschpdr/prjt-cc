@@ -1,4 +1,7 @@
 $mainDarkGray: #333333;
-$wrapperMargin: 4.25rem;
-$smallMargin: calc($wrapperMargin - 2rem);
-$socialIconHeight: calc($wrapperMargin + 2rem);
+$mediumGray: #9A9A9A;
+$lightGray: #FAFAFA;
+$wrapperPadding: 4.25rem;
+$smallPadding: calc($wrapperPadding - 2rem);
+$socialIconHeight: calc($wrapperPadding + 2rem);
+$contentWidth: calc(75% - $wrapperPadding);

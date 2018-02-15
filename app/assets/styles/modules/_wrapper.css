@@ -1,11 +1,11 @@
 .wrapper {
   
   @mixin atSmall {
-    margin: $smallMargin $smallMargin 0 $smallMargin;
+    padding: $smallPadding $smallPadding 0 $smallPadding;
   }
 
   @mixin atLarge {
-    margin: $wrapperMargin $wrapperMargin 0 $wrapperMargin;
+    padding: $wrapperPadding $wrapperPadding 0 $wrapperPadding;
   }
 
 }
