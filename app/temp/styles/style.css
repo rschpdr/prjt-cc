@@ -552,6 +552,117 @@ hr {
       position: absolute;
     }
 
+.header {
+  display: block;
+  
+  
+}
+
+@media (min-width: 1010px) {
+
+.header {
+    display: none
+  
+  
+}
+  }
+
+.header__logo {
+    float: left;
+    max-width: 
+  }
+
+.header__menu-icon {
+    width: 20px;
+    height: 19px;
+    position: absolute;
+    z-index: 10;
+    top: 10px;
+    right: 10px;
+  }
+
+.header__menu-icon::before {
+      content: "";
+      position: absolute;
+      top:0;
+      left:0;
+      width: 20px;
+      height: 3px;
+      background-color: #333333;
+      -webkit-transform-origin: 0 0;
+              transform-origin: 0 0;
+      -webkit-transition: -webkit-transform .3s ease-out;
+      transition: -webkit-transform .3s ease-out;
+      transition: transform .3s ease-out;
+      transition: transform .3s ease-out, -webkit-transform .3s ease-out;
+    }
+
+.header__menu-icon__middle {
+      position: absolute;
+      top:8px;
+      left:0;
+      width: 20px;
+      height: 3px;
+      background-color: #333333;
+      -webkit-transition: all .3s ease-out;
+      transition: all .3s ease-out;
+      -webkit-transform-origin: 0 50%;
+              transform-origin: 0 50%;
+    }
+
+.header__menu-icon::after {
+      content: "";
+      position: absolute;
+      bottom:0;
+      left:0;
+      width: 20px;
+      height: 3px;
+      background-color: #333333;
+      -webkit-transform-origin: 0 100%;
+              transform-origin: 0 100%;
+      -webkit-transition: -webkit-transform .3s ease-out;
+      transition: -webkit-transform .3s ease-out;
+      transition: transform .3s ease-out;
+      transition: transform .3s ease-out, -webkit-transform .3s ease-out;
+    }
+
+.header__menu-icon--close-x::before {
+    -webkit-transform: rotate(45deg) scaleX(1.25);
+            transform: rotate(45deg) scaleX(1.25);
+  }
+
+.header__menu-icon--close-x .header__menu-icon__middle {
+    opacity: 0;
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+  }
+
+.header__menu-icon--close-x::after {
+    -webkit-transform: rotate(-45deg) scaleX(1.25) translateY(1px);
+            transform: rotate(-45deg) scaleX(1.25) translateY(1px);
+  }
+
+.header__menu-content {
+    display: none;
+    -webkit-transition: display 0.5s ease-out;
+    transition: display 0.5s ease-out;
+  }
+
+.header__menu-content ul {
+      padding: 0;
+      text-align: center;
+      list-style: none;
+    }
+
+.header__menu-content ul li {
+        margin: 0 auto;
+      }
+
+.header__menu-content--is-visible {
+      display: block;
+      padding-top: 123px;
+    }
+
 input[type=submit].btn {
   
   padding: 15px;
