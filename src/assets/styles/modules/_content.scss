@@ -1,0 +1,53 @@
+.content {
+  @include atLarge {
+    &--gray-bg {
+      position: absolute;
+      margin-top: -$wrapperPadding;
+      width: $contentWidth;
+      height: 100%;
+      background-color: $lightGray;
+    }
+  }
+
+  &__description {
+    padding: 0 0.9375rem 3.75rem 0.9375rem;
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: 400;
+    padding-bottom: 2.375rem;
+
+    &--secondary {
+      color: $mediumGray;
+      display: inline-block;
+      padding-left: 0.5rem;
+    }
+  }
+
+  &__paragraph {
+    font-size: 0.875rem;
+    padding-bottom: 5.75rem;
+
+    &--less-padding {
+      padding-bottom: 3.75rem;
+    }
+
+    &--push-down {
+      margin-top: 90px;
+    }
+  }
+
+  @include atLarge {
+    margin-left: 25%;
+
+    &__description {
+      padding: 6.1875rem 0 5.75rem 0;
+    }
+
+    &__title {
+      padding-bottom: 2.375rem;
+    }
+  }
+}

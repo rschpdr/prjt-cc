@@ -1,0 +1,22 @@
+.social-icons {
+  position: absolute;
+  text-align: left;
+  bottom: $socialIconHeight;
+  margin-bottom: 3.125rem;
+  margin-left: 1.25rem;
+
+  &__icon {
+    display: inline-block;
+    position: relative;
+
+    @include atSmall {
+      width: 32px;
+      margin: 0 5px;
+    }
+
+    .icon {
+      display: block;
+      position: absolute;
+    }
+  }
+}

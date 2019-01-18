@@ -1,0 +1,11 @@
+.sidebar-wrapper {
+  display: none;
+
+  @include atLarge {
+    display: block;
+    position: fixed;
+    height: 100%;
+    width: 25%;
+    margin-bottom: inherit;
+  }
+}

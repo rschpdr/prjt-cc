@@ -1,0 +1,9 @@
+.wrapper {
+  @include atSmall {
+    padding: $smallPadding $smallPadding 0 $smallPadding;
+  }
+
+  @include atLarge {
+    padding: $wrapperPadding $wrapperPadding 0 $wrapperPadding;
+  }
+}

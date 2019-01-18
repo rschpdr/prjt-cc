@@ -1,0 +1,41 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: $mainDarkGray;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+li > a {
+  text-decoration: none;
+  color: $mainDarkGray;
+}
+
+ul,
+p {
+  line-height: 1.6;
+}
+
+@include atMedium {
+  ul,
+  p {
+    line-height: 2.4;
+  }
+}
+
+hr {
+  position: absolute;
+  display: block;
+  border-top: 1px solid $mainDarkGray;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+  width: 90px;
+  float: left;
+}

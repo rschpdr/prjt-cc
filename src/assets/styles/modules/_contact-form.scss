@@ -1,0 +1,35 @@
+.contact-form {
+  padding-left: 1.5rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  @include atSmall {
+    padding-left: 4.5rem;
+  }
+
+  @include atSmallMedium {
+    padding-left: 11.5rem;
+  }
+
+  @include atLarge {
+    padding-left: 7.5rem;
+  }
+
+  input,
+  textarea {
+    background-color: transparent;
+    display: block;
+    border-bottom: solid 1px $mediumGray;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    font-style: italic;
+    width: 19.375rem;
+    margin-bottom: 1.75rem;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
