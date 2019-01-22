@@ -1,5 +1,6 @@
 import logo from '../assets/images/logo.png';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import MenuItem from './MenuItem';
 import Icon from './Icon';
 
@@ -16,8 +17,8 @@ const Sidebar = () => {
         <div className="sidebar__menu">
           <ul>
             <MenuItem route="/" text="Início" />
-            <MenuItem route="/portfolio" text="Portfolio" />
             <MenuItem route="/sobre" text="Sobre" />
+            <MenuItem route="/portfolio" text="Portfolio" />
             <MenuItem route="/contato" text="Contato" />
           </ul>
         </div>
