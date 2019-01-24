@@ -1,5 +1,7 @@
 .sidebar {
   @include atLarge {
+    display: flex;
+    flex-direction: column;
     position: relative;
     height: 100%;
     width: 100%;
@@ -9,12 +11,15 @@
     }
 
     &__menu {
-      position: absolute;
-      top: 40%;
-      transform: translateY(-50%);
+      margin-top: 30%;
+      flex-grow: 1;
 
       ul {
         list-style: none;
+
+        ul {
+          padding: 1rem;
+        }
       }
     }
   }
