@@ -1,33 +1,17 @@
 import logo from '../assets/images/logo.png';
 import React, { Component } from 'react';
-import jsonp from 'jsonp';
-import _ from 'lodash';
 import MenuItem from './MenuItem';
 import CategoryMenu from './CategoryMenu';
 import Icon from './Icon';
 
-const API_KEY = 'dsLxU0oVIJdF25SQBZEwwEAL7N8aTLE3';
-const USERNAME = 'carolcarretto';
-const URL = `https://api.behance.net/v2/users/${USERNAME}/projects?client_id=${API_KEY}`;
 const iconSize = '24px';
 
 class Sidebar extends Component {
-  state = {
-    portfolioToggle: false,
-    categories: []
-  };
-
-  async componentDidMount() {
-    const response = await jsonp(URL, null, (err, data) => {
-      if (err) {
-        console.log(err);
-      } else {
-        let categories = _.uniq(
-          _.flatten(data.projects.map(arr => arr.fields))
-        );
-        this.setState({ categories });
-      }
-    });
+  constructor(props) {
+    super(props);
+    this.state = {
+      portfolioToggle: false
+    };
   }
 
   onPortfolioClick = () => {
@@ -50,7 +34,10 @@ class Sidebar extends Component {
               <MenuItem route="/sobre" text="Sobre" />
               <li onClick={this.onPortfolioClick}>Portfolio</li>
               {this.state.portfolioToggle ? (
-                <CategoryMenu categories={this.state.categories} />
+                <CategoryMenu
+                  categories={this.props.categories}
+                  onCategorieClick={this.props.onCategorieClick}
+                />
               ) : null}
               <MenuItem route="/contato" text="Contato" />
             </ul>

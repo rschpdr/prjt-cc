@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import jsonp from 'jsonp';
 import { Link } from 'react-router-dom';
 
-const API_KEY = 'dsLxU0oVIJdF25SQBZEwwEAL7N8aTLE3';
+const API_KEY = 'x8fCQnDWe9hC20uZ7vgnmvWXuf9pplBb';
 const USERNAME = 'carolcarretto';
 const URL = `https://api.behance.net/v2/users/${USERNAME}/projects?client_id=${API_KEY}`;
 
 class Portfolio extends Component {
-  state = { projects: [] };
+  constructor(props) {
+    super(props);
+    this.state = { projects: [] };
+  }
 
   async componentDidMount() {
     const response = await jsonp(URL, null, (err, data) => {
@@ -22,7 +25,7 @@ class Portfolio extends Component {
   renderProjects() {
     return this.state.projects.map(project => {
       return (
-        <Link key={project.id} to={`/projetos/${project.id}`}>
+        <Link key={project.id} to={`/projects/${project.id}`}>
           <div className="column column__large-4 column__medium-6">
             <img
               src={project.covers['404']}
@@ -35,6 +38,24 @@ class Portfolio extends Component {
     });
   }
 
+  filterProjects() {
+    return this.state.projects.map(project => {
+      if (project.fields.includes(this.props.filterBy)) {
+        return (
+          <Link key={project.id} to={`/projects/${project.id}`}>
+            <div className="column column__large-4 column__medium-6">
+              <img
+                src={project.covers['404']}
+                alt={project.name}
+                title={project.name}
+              />
+            </div>
+          </Link>
+        );
+      }
+    });
+  }
+
   render() {
     if (!this.state.projects) {
       return <div>Loading...</div>;
@@ -42,7 +63,11 @@ class Portfolio extends Component {
 
     return (
       <div className="content">
-        <div className="row">{this.renderProjects()}</div>
+        <div className="row">
+          {this.props.filterBy != null
+            ? this.filterProjects()
+            : this.renderProjects()}
+        </div>
       </div>
     );
   }
