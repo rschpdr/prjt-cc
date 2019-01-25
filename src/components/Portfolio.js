@@ -22,38 +22,37 @@ class Portfolio extends Component {
     });
   }
 
+  renderThumbnails = project => {
+    return (
+      <Link key={project.id} to={`/projetos/${project.id}`}>
+        <div className="column column__large-4 column__medium-6">
+          <img
+            src={project.covers['404']}
+            alt={project.name}
+            title={project.name}
+          />
+        </div>
+      </Link>
+    );
+  };
+
   renderProjects() {
     return this.state.projects.map(project => {
-      return (
-        <Link key={project.id} to={`/projects/${project.id}`}>
-          <div className="column column__large-4 column__medium-6">
-            <img
-              src={project.covers['404']}
-              alt={project.name}
-              title={project.name}
-            />
-          </div>
-        </Link>
-      );
+      return this.renderThumbnails(project);
     });
   }
 
   filterProjects() {
     return this.state.projects.map(project => {
       if (project.fields.includes(this.props.filterBy)) {
-        return (
-          <Link key={project.id} to={`/projects/${project.id}`}>
-            <div className="column column__large-4 column__medium-6">
-              <img
-                src={project.covers['404']}
-                alt={project.name}
-                title={project.name}
-              />
-            </div>
-          </Link>
-        );
+        return this.renderThumbnails(project);
       }
     });
+  }
+
+  resetFilters(e) {
+    e.preventDefault();
+    return this.props.resetFilters();
   }
 
   render() {
@@ -64,6 +63,10 @@ class Portfolio extends Component {
     return (
       <div className="content">
         <div className="row">
+          <div className="breadcrumb">
+            <a onClick={e => this.resetFilters(e)}>Portfolio > </a>
+            <span>{this.props.filterBy}</span>
+          </div>
           {this.props.filterBy != null
             ? this.filterProjects()
             : this.renderProjects()}

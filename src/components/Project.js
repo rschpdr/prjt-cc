@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import jsonp from 'jsonp';
 
-const API_KEY = 'dsLxU0oVIJdF25SQBZEwwEAL7N8aTLE3';
-const USERNAME = 'carolcarretto';
+const API_KEY = 'x8fCQnDWe9hC20uZ7vgnmvWXuf9pplBb';
 const URL = `https://api.behance.net/v2/projects`;
 
 class Project extends Component {
@@ -10,7 +9,6 @@ class Project extends Component {
 
   async componentDidMount() {
     const { id } = this.props.match.params;
-
     const response = await jsonp(
       `${URL}/${id}?client_id=${API_KEY}`,
       null,
@@ -43,7 +41,6 @@ class Project extends Component {
     if (!this.state.project) {
       return <div>Loading...</div>;
     }
-
     return (
       <div className="content">
         <div className="row">
