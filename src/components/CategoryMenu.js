@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CategoryMenu = props => {
   const renderCategories = () => {
     return props.categories.map(categorie => {
       return (
-        <li key={categorie} onClick={props.onCategorieClick}>
-          {categorie}
+        <li key={categorie}>
+          <Link to={`/?filter=${categorie}`}>{categorie}</Link>
         </li>
       );
     });

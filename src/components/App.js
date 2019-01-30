@@ -16,10 +16,6 @@ class App extends Component {
     this.setState({ selectedCategorie: e.target.innerText });
   };
 
-  resetFilters = () => {
-    this.setState({ selectedCategorie: null });
-  };
-
   render() {
     return (
       <div>
@@ -27,16 +23,7 @@ class App extends Component {
           <div className="wrapper">
             <Sidebar onCategorieClick={this.onCategorieClick} />
             <Switch>
-              <Route
-                path="/"
-                exact
-                render={() => (
-                  <Portfolio
-                    filterBy={this.state.selectedCategorie}
-                    resetFilters={this.resetFilters}
-                  />
-                )}
-              />
+              <Route path="/" exact component={Portfolio} />
               <Route path="/projetos/:id" exact component={Project} />
               <Route path="/contato" exact component={ContactForm} />
               <Route path="/sobre" exact component={About} />

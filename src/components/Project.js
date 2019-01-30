@@ -26,10 +26,16 @@ class Project extends Component {
     if (this.state.project.modules !== undefined) {
       return this.state.project.modules.map(module => {
         if (module.text) {
+          const doc = new DOMParser().parseFromString(module.text, 'text/html');
+          const txtArea = document.createElement('textarea');
+          txtArea.innerHTML = doc.body.innerHTML;
+          console.log(txtArea);
           return (
-            <p key={module.id} className="content__paragraph">
-              {module.text_plain}
-            </p>
+            <div
+              key={module.id}
+              className="content__paragraph"
+              dangerouslySetInnerHTML={{ __html: doc.body.innerHTML }}
+            />
           );
         }
         return <img src={module.src} key={module.id} />;

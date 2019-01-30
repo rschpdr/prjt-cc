@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import jsonp from 'jsonp';
 import { Link } from 'react-router-dom';
+import qs from 'query-string';
 
 const API_KEY = 'x8fCQnDWe9hC20uZ7vgnmvWXuf9pplBb';
 const USERNAME = 'carolcarretto';
@@ -43,19 +44,22 @@ class Portfolio extends Component {
   }
 
   filterProjects() {
+    const queryString = this.parseQueryString();
     return this.state.projects.map(project => {
-      if (project.fields.includes(this.props.filterBy)) {
+      if (project.fields.includes(queryString.filter)) {
         return this.renderThumbnails(project);
       }
     });
   }
 
-  resetFilters(e) {
-    e.preventDefault();
-    return this.props.resetFilters();
-  }
+  parseQueryString = () => {
+    const queryString = qs.parse(this.props.location.search);
+    return queryString;
+  };
 
   render() {
+    const queryString = this.parseQueryString();
+
     if (!this.state.projects) {
       return <div>Loading...</div>;
     }
@@ -64,10 +68,10 @@ class Portfolio extends Component {
       <div className="content">
         <div className="row">
           <div className="breadcrumb">
-            <a onClick={e => this.resetFilters(e)}>Portfolio > </a>
-            <span>{this.props.filterBy}</span>
+            <span>Portfolio > </span>
+            <span>{queryString.filter}</span>
           </div>
-          {this.props.filterBy != null
+          {queryString.filter != undefined
             ? this.filterProjects()
             : this.renderProjects()}
         </div>
