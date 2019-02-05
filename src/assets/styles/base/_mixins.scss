@@ -22,6 +22,12 @@
   }
 }
 
+@mixin atPortrait {
+  @media (orientation: portrait) {
+    @content;
+  }
+}
+
 @mixin clearfix {
   &::after {
     content: '';

@@ -10,10 +10,15 @@
   }
 
   &__description {
-    padding: 0 0.9375rem 3.75rem 0.9375rem;
+    padding: 5rem 0.9375rem 3.75rem 0.9375rem;
+
+    @include atLarge {
+      padding: 0 0.9375rem 3.75rem 0.9375rem;
+    }
   }
 
   &__title {
+    margin: 0;
     font-size: 1.25rem;
     font-style: italic;
     font-weight: 400;

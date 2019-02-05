@@ -27,9 +27,6 @@ class Project extends Component {
       return this.state.project.modules.map(module => {
         if (module.text) {
           const doc = new DOMParser().parseFromString(module.text, 'text/html');
-          const txtArea = document.createElement('textarea');
-          txtArea.innerHTML = doc.body.innerHTML;
-          console.log(txtArea);
           return (
             <div
               key={module.id}

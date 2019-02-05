@@ -19,14 +19,7 @@ li > a {
 
 ul,
 p {
-  line-height: 1.6;
-}
-
-@include atMedium {
-  ul,
-  p {
-    line-height: 2.4;
-  }
+  line-height: 2.4;
 }
 
 hr {

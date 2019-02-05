@@ -1,7 +1,7 @@
 .column {
   width: 100%;
   display: inline-block;
-  padding-bottom: 3.75rem;
+  padding-bottom: 0.1rem;
 
   @include atSmall {
     &__medium-6 {
@@ -12,6 +12,8 @@
   }
 
   @include atLarge {
+    padding-bottom: 3.75rem;
+
     &__large-4 {
       float: left;
       width: 33.3332%;

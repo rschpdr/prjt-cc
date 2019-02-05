@@ -1,0 +1,53 @@
+.header-menu {
+  position: fixed;
+  width: 100%;
+  height: 3rem;
+  left: 0;
+  top: 0;
+  background-color: #fff;
+  z-index: 2;
+
+  @include atLarge {
+    display: none;
+  }
+
+  &__icon {
+    width: 20px;
+    height: 19px;
+    position: fixed;
+    z-index: 10;
+    top: 15px;
+    left: 10px;
+    transform: translateX(50%);
+
+    cursor: pointer;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 25px;
+      height: 3px;
+      background-color: $mainDarkGray;
+    }
+
+    &__middle {
+      position: absolute;
+      top: 8px;
+      left: 0;
+      width: 25px;
+      height: 3px;
+      background-color: $mainDarkGray;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 25px;
+      height: 3px;
+      background-color: $mainDarkGray;
+    }
+  }
+}

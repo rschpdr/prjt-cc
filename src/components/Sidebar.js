@@ -17,7 +17,8 @@ class Sidebar extends Component {
     super(props);
     this.state = {
       categories: [],
-      portfolioToggle: false
+      portfolioToggle: false,
+      sidebarToggle: false
     };
   }
 
@@ -40,47 +41,75 @@ class Sidebar extends Component {
     }));
   };
 
+  toggleSidebar = () => {
+    this.setState(prevState => ({
+      sidebarToggle: !prevState.sidebarToggle,
+      portfolioToggle: false
+    }));
+  };
+
+  setSidebarVisibility = () => {
+    let className;
+    if (this.props.windowWidth < 1010) {
+      className = this.state.sidebarToggle
+        ? 'sidebar-wrapper'
+        : 'sidebar-wrapper sidebar-wrapper--hidden';
+    } else {
+      className = 'sidebar-wrapper';
+    }
+
+    console.log(className);
+    return className;
+  };
+
   render() {
     return (
-      <div className="sidebar-wrapper">
-        <div className="sidebar">
-          <div className="sidebar__logo">
-            <Link to="/">
-              <img src={logo} className="sidebar__logo-img" />
-            </Link>
+      <>
+        <header className="header-menu">
+          <div className="header-menu__icon" onClick={this.toggleSidebar}>
+            <div className="header-menu__icon__middle" />
           </div>
+        </header>
+        <div className={this.setSidebarVisibility()}>
+          <div className="sidebar">
+            <div className="sidebar__logo">
+              <Link to="/">
+                <img src={logo} className="sidebar__logo-img" />
+              </Link>
+            </div>
 
-          <div className="sidebar__menu">
-            <ul>
-              <MenuItem route="/" text="Início" />
-              <MenuItem route="/sobre" text="Sobre" />
-              <li onClick={this.onPortfolioClick}>Portfolio</li>
-              {this.state.portfolioToggle ? (
-                <CategoryMenu
-                  categories={this.state.categories}
-                  onCategorieClick={this.props.onCategorieClick}
-                />
-              ) : null}
-              <MenuItem route="/contato" text="Contato" />
-            </ul>
-          </div>
+            <div className="sidebar__menu">
+              <ul>
+                <MenuItem route="/" text="Início" />
+                <MenuItem route="/sobre" text="Sobre" />
+                <li onClick={this.onPortfolioClick}>Portfolio</li>
+                {this.state.portfolioToggle ? (
+                  <CategoryMenu
+                    categories={this.state.categories}
+                    onCategorieClick={this.props.onCategorieClick}
+                  />
+                ) : null}
+                <MenuItem route="/contato" text="Contato" />
+              </ul>
+            </div>
 
-          <div className="social-icons">
-            <a href="" className="social-icons__icon">
-              <Icon height={iconSize} width={iconSize} name="facebook" />
-            </a>
-            <a href="" className="social-icons__icon">
-              <Icon height={iconSize} width={iconSize} name="instagram" />
-            </a>
-            <a href="" className="social-icons__icon">
-              <Icon height={iconSize} width={iconSize} name="tumblr" />
-            </a>
-            <a href="" className="social-icons__icon">
-              <Icon height={iconSize} width={iconSize} name="behance" />
-            </a>
+            <div className="social-icons">
+              <a href="" className="social-icons__icon">
+                <Icon height={iconSize} width={iconSize} name="facebook" />
+              </a>
+              <a href="" className="social-icons__icon">
+                <Icon height={iconSize} width={iconSize} name="instagram" />
+              </a>
+              <a href="" className="social-icons__icon">
+                <Icon height={iconSize} width={iconSize} name="tumblr" />
+              </a>
+              <a href="" className="social-icons__icon">
+                <Icon height={iconSize} width={iconSize} name="behance" />
+              </a>
+            </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 }

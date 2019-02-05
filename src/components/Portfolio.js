@@ -68,8 +68,12 @@ class Portfolio extends Component {
       <div className="content">
         <div className="row">
           <div className="breadcrumb">
-            <span>Portfolio > </span>
-            <span>{queryString.filter}</span>
+            <span>Portfolio</span>
+            <span>
+              {queryString.filter != undefined
+                ? ` > ${queryString.filter}`
+                : null}
+            </span>
           </div>
           {queryString.filter != undefined
             ? this.filterProjects()
