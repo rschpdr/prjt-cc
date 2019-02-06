@@ -21,6 +21,7 @@ class Portfolio extends Component {
         this.setState({ projects: data.projects });
       }
     });
+    return response;
   }
 
   renderThumbnails = project => {
@@ -49,6 +50,7 @@ class Portfolio extends Component {
       if (project.fields.includes(queryString.filter)) {
         return this.renderThumbnails(project);
       }
+      return null;
     });
   }
 
@@ -70,12 +72,12 @@ class Portfolio extends Component {
           <div className="breadcrumb">
             <span>Portfolio</span>
             <span>
-              {queryString.filter != undefined
+              {queryString.filter !== undefined
                 ? ` > ${queryString.filter}`
                 : null}
             </span>
           </div>
-          {queryString.filter != undefined
+          {queryString.filter !== undefined
             ? this.filterProjects()
             : this.renderProjects()}
         </div>

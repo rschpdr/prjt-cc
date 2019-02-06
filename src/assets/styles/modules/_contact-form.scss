@@ -2,6 +2,7 @@
   padding-left: 1.5rem;
   position: absolute;
   top: 50%;
+  z-index: 0;
   transform: translateY(-50%);
 
   @include atSmall {

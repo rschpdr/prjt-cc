@@ -33,6 +33,7 @@ class Sidebar extends Component {
         this.setState({ categories });
       }
     });
+    return response;
   }
 
   onPortfolioClick = () => {
@@ -58,7 +59,6 @@ class Sidebar extends Component {
       className = 'sidebar-wrapper';
     }
 
-    console.log(className);
     return className;
   };
 
@@ -74,7 +74,7 @@ class Sidebar extends Component {
           <div className="sidebar">
             <div className="sidebar__logo">
               <Link to="/">
-                <img src={logo} className="sidebar__logo-img" />
+                <img src={logo} className="sidebar__logo-img" alt="logo" />
               </Link>
             </div>
 
@@ -94,16 +94,28 @@ class Sidebar extends Component {
             </div>
 
             <div className="social-icons">
-              <a href="" className="social-icons__icon">
+              <a
+                href="https://www.facebook.com/carolcarrettoart/"
+                className="social-icons__icon"
+              >
                 <Icon height={iconSize} width={iconSize} name="facebook" />
               </a>
-              <a href="" className="social-icons__icon">
+              <a
+                href="https://www.instagram.com/carolcarretto/"
+                className="social-icons__icon"
+              >
                 <Icon height={iconSize} width={iconSize} name="instagram" />
               </a>
-              <a href="" className="social-icons__icon">
+              <a
+                href="http://carolsketches.tumblr.com/"
+                className="social-icons__icon"
+              >
                 <Icon height={iconSize} width={iconSize} name="tumblr" />
               </a>
-              <a href="" className="social-icons__icon">
+              <a
+                href="https://www.behance.net/carolcarretto"
+                className="social-icons__icon"
+              >
                 <Icon height={iconSize} width={iconSize} name="behance" />
               </a>
             </div>

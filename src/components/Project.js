@@ -20,22 +20,42 @@ class Project extends Component {
         }
       }
     );
+    return response;
   }
 
   renderModules() {
     if (this.state.project.modules !== undefined) {
       return this.state.project.modules.map(module => {
-        if (module.text) {
-          const doc = new DOMParser().parseFromString(module.text, 'text/html');
-          return (
-            <div
-              key={module.id}
-              className="content__paragraph"
-              dangerouslySetInnerHTML={{ __html: doc.body.innerHTML }}
-            />
-          );
+        switch (module.type) {
+          case 'text':
+            const doc = new DOMParser().parseFromString(
+              module.text,
+              'text/html'
+            );
+            return (
+              <div
+                key={module.id}
+                className="content__paragraph"
+                dangerouslySetInnerHTML={{ __html: doc.body.innerHTML }}
+              />
+            );
+          case 'image':
+            return (
+              <img alt={module.caption} src={module.src} key={module.id} />
+            );
+          case 'media_collection':
+            return module.components.map(component => {
+              return (
+                <img
+                  alt={component.caption}
+                  src={component.src}
+                  key={component.id}
+                />
+              );
+            });
+          default:
+            return null;
         }
-        return <img src={module.src} key={module.id} />;
       });
     }
   }
