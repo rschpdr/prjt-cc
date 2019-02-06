@@ -7,6 +7,7 @@ const About = () => {
         src="http://via.placeholder.com/885x460"
         alt="description"
         title="title"
+        className="content__image"
       />
       <div className="content__description">
         <span>sobre</span>
