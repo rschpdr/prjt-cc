@@ -1,12 +1,41 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import FormInput from './FormInput';
+
+const validate = formValues => {
+  const errors = {};
+
+  if (!formValues.nome) {
+    errors.nome = 'Por favor preencha um nome';
+  }
+
+  if (!formValues.email) {
+    errors.email = 'Por favor preencha um e-mail';
+  }
+
+  if (!formValues.assunto) {
+    errors.assunto = 'Por favor preencha o assunto';
+  }
+
+  return errors;
+};
 
 class ContactForm extends Component {
   state = {
     nome: '',
     email: '',
     assunto: '',
-    error: null
+    touched: {
+      nome: false,
+      email: false,
+      assunto: false
+    }
+  };
+
+  handleBlur = e => {
+    this.setState({
+      touched: { ...this.state.touched, [e.target.name]: true }
+    });
   };
 
   handleChange = e => {
@@ -21,13 +50,23 @@ class ContactForm extends Component {
         this.state
       );
       this.setState({ sucess: true });
+      return response;
     } catch (e) {
       console.log(e);
     }
   };
 
   render() {
-    console.log(this.state.message);
+    const errors = validate(this.state);
+
+    const shouldMarkError = (name, errors) => {
+      if (this.state.touched[name]) {
+        return errors[name];
+      }
+
+      return null;
+    };
+
     return (
       <div className="content content--gray-bg">
         <form className="contact-form" onSubmit={this.handleSubmit}>
@@ -37,24 +76,33 @@ class ContactForm extends Component {
               Work with me!
             </strong>
           </h1>
-          <input
+          <FormInput
+            element="input"
             type="text"
             name="nome"
             placeholder="Nome"
             onChange={this.handleChange}
+            onBlur={this.handleBlur}
+            error={shouldMarkError('nome', errors)}
           />
-          <input
+          <FormInput
+            element="input"
             type="email"
             name="email"
             placeholder="E-mail"
             onChange={this.handleChange}
+            onBlur={this.handleBlur}
+            error={shouldMarkError('email', errors)}
           />
-          <textarea
+          <FormInput
+            element="textarea"
             type="text"
             name="assunto"
-            rows="5"
             placeholder="Assunto"
+            rows="5"
             onChange={this.handleChange}
+            onBlur={this.handleBlur}
+            error={shouldMarkError('assunto', errors)}
           />
           <input className="btn btn--right" type="submit" value="Enviar" />
         </form>
