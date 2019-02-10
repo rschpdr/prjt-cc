@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import _ from 'lodash';
 import FormInput from './FormInput';
 
 const validate = formValues => {
@@ -44,12 +45,14 @@ class ContactForm extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
+
+    const { touched, ...data } = this.state;
+
     try {
       const response = await axios.post(
         'https://formcarry.com/s/S5Cq2p_d_Zj',
-        this.state
+        data
       );
-      this.setState({ sucess: true });
       return response;
     } catch (e) {
       console.log(e);
@@ -67,6 +70,7 @@ class ContactForm extends Component {
       return null;
     };
 
+    console.log(errors);
     return (
       <div className="content content--gray-bg">
         <form className="contact-form" onSubmit={this.handleSubmit}>
@@ -104,7 +108,12 @@ class ContactForm extends Component {
             onBlur={this.handleBlur}
             error={shouldMarkError('assunto', errors)}
           />
-          <input className="btn btn--right" type="submit" value="Enviar" />
+          <input
+            className="btn btn--right"
+            type="submit"
+            value="Enviar"
+            disabled={!_.isEmpty(errors)}
+          />
         </form>
       </div>
     );
