@@ -47,4 +47,11 @@
       color: #dc3545;
     }
   }
+
+  &__result {
+    display: flex;
+    justify-content: center;
+    height: 3.25rem;
+    max-height: 3.25rem;
+  }
 }

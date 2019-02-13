@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import _ from 'lodash';
 import FormInput from './FormInput';
+import Spinner from './Spinner';
 
 const validate = formValues => {
   const errors = {};
@@ -30,7 +31,9 @@ class ContactForm extends Component {
       nome: false,
       email: false,
       assunto: false
-    }
+    },
+    isPostingData: null,
+    postResult: null
   };
 
   handleBlur = e => {
@@ -46,16 +49,42 @@ class ContactForm extends Component {
   handleSubmit = async e => {
     e.preventDefault();
 
-    const { touched, ...data } = this.state;
+    const { touched, isPostingData, postResult, ...data } = this.state;
+    const isAllBlank = _.values(data).every(_.isEmpty);
+
+    if (isAllBlank) {
+      return this.setState({
+        touched: _.mapValues(this.state.touched, () => true)
+      });
+    }
 
     try {
+      this.setState({ isPostingData: true });
+
       const response = await axios.post(
         'https://formcarry.com/s/S5Cq2p_d_Zj',
         data
       );
+
+      if ((response.data.status = 200)) {
+        this.setState({
+          isPostingData: false,
+          postResult: 'Sua mensagem foi enviada! Logo entrarei em contato ;)'
+        });
+      } else {
+        this.setState({
+          isPostingData: false,
+          postResult:
+            'Desculpe! Algo deu errado e sua mensagem não pôde ser enviada. Por favor, me avise pelas redes sociais ou e-mail.'
+        });
+      }
       return response;
     } catch (e) {
-      console.log(e);
+      this.setState({
+        isPostingData: false,
+        postResult:
+          'Desculpe! Algo deu errado e sua mensagem não pôde ser enviada. Por favor, me avise pelas redes sociais ou e-mail.'
+      });
     }
   };
 
@@ -70,7 +99,6 @@ class ContactForm extends Component {
       return null;
     };
 
-    console.log(errors);
     return (
       <div className="content content--gray-bg">
         <form className="contact-form" onSubmit={this.handleSubmit}>
@@ -108,12 +136,15 @@ class ContactForm extends Component {
             onBlur={this.handleBlur}
             error={shouldMarkError('assunto', errors)}
           />
-          <input
-            className="btn btn--right"
-            type="submit"
-            value="Enviar"
-            disabled={!_.isEmpty(errors)}
-          />
+          <div className="contact-form__result">
+            {this.state.isPostingData === null ? (
+              <input className="btn btn--right" type="submit" value="Enviar" />
+            ) : this.state.isPostingData ? (
+              <Spinner />
+            ) : (
+              this.state.postResult
+            )}
+          </div>
         </form>
       </div>
     );
