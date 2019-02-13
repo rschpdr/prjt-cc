@@ -46,16 +46,22 @@ class ContactForm extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleSubmit = async e => {
+  handleSubmit = async (e, errors) => {
     e.preventDefault();
 
     const { touched, isPostingData, postResult, ...data } = this.state;
     const isAllBlank = _.values(data).every(_.isEmpty);
 
+    // If all fields are blank, return this function and show all errors
     if (isAllBlank) {
       return this.setState({
         touched: _.mapValues(this.state.touched, () => true)
       });
+    }
+
+    // Return this function if there are errors
+    if (!_.isEmpty(errors)) {
+      return;
     }
 
     try {
@@ -101,7 +107,10 @@ class ContactForm extends Component {
 
     return (
       <div className="content content--gray-bg">
-        <form className="contact-form" onSubmit={this.handleSubmit}>
+        <form
+          className="contact-form"
+          onSubmit={e => this.handleSubmit(e, errors)}
+        >
           <h1 className="content__title">
             Contato
             <strong className="content__title content__title--secondary">
