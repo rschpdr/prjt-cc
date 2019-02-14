@@ -1,15 +1,11 @@
 import logo from '../assets/images/logo.png';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import jsonp from 'jsonp';
 import _ from 'lodash';
 import MenuItem from './MenuItem';
 import CategoryMenu from './CategoryMenu';
 import Icon from './Icon';
 
-const API_KEY = 'x8fCQnDWe9hC20uZ7vgnmvWXuf9pplBb';
-const USERNAME = 'carolcarretto';
-const URL = `https://api.behance.net/v2/users/${USERNAME}/projects?client_id=${API_KEY}`;
 const iconSize = '24px';
 
 class Sidebar extends Component {
@@ -22,18 +18,13 @@ class Sidebar extends Component {
     };
   }
 
-  async componentDidMount() {
-    const response = await jsonp(URL, null, (err, data) => {
-      if (err) {
-        console.log(err);
-      } else {
-        let categories = _.uniq(
-          _.flatten(data.projects.map(arr => arr.fields))
-        );
-        this.setState({ categories });
-      }
-    });
-    return response;
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.projects !== this.props.projects) {
+      let categories = _.uniq(
+        _.flatten(nextProps.projects.map(arr => arr.fields))
+      );
+      this.setState({ categories });
+    }
   }
 
   onPortfolioClick = () => {

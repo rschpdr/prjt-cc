@@ -3,12 +3,20 @@ import jsonp from 'jsonp';
 
 const API_KEY = 'x8fCQnDWe9hC20uZ7vgnmvWXuf9pplBb';
 const URL = `https://api.behance.net/v2/projects`;
+const USERNAME = 'carolcarretto';
 
 class Project extends Component {
   state = { project: [] };
 
-  async componentDidMount() {
-    const { id } = this.props.match.params;
+  fetchData = async id => {
+    // Search sessionStorage for projects array. If present, set state to it. If not, proceed to the API call.
+    const cachedProject = sessionStorage.getItem(id);
+    if (cachedProject) {
+      this.setState({ project: JSON.parse(cachedProject) });
+      return;
+    }
+
+    // If no data is found in sessionStorage, make an API call, then save result to sessionStorage.
     const response = await jsonp(
       `${URL}/${id}?client_id=${API_KEY}`,
       null,
@@ -16,11 +24,27 @@ class Project extends Component {
         if (err) {
           console.log(err);
         } else {
-          this.setState({ project: data.project });
+          const { project } = data;
+          // If an user tries to load a project from another author, redirect to home.
+          if (project.owners[0].username !== USERNAME) {
+            this.props.history.push('/');
+          }
+          this.onFetchResult(project, project.id);
         }
       }
     );
     return response;
+  };
+
+  onFetchResult(data, key) {
+    // Save API call result to sessionStorage, then set state to it.
+    sessionStorage.setItem(key, JSON.stringify(data));
+    this.setState({ project: data });
+  }
+
+  async componentDidMount() {
+    const { id } = this.props.match.params;
+    this.fetchData(id);
   }
 
   renderModules() {
