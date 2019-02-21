@@ -1,0 +1,43 @@
+.images-animation-enter {
+  opacity: 0.01;
+  transform: scale(1.1);
+}
+
+.images-animation-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 1000ms;
+}
+
+.images-animation-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.images-animation-exit-active {
+  opacity: 0.01;
+  transform: scale(1.1);
+  transition: all 1000ms;
+}
+
+.image-enter {
+  opacity: 0.01;
+  transform: scale(0);
+}
+
+.image-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 500ms;
+}
+
+.image-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.image-exit-active {
+  opacity: 0.01;
+  transform: scale(0);
+  transition: all 500ms;
+}

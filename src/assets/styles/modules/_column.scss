@@ -2,6 +2,12 @@
   width: 100%;
   display: inline-block;
   padding-bottom: 0.1rem;
+  transform: scale(0);
+  transition: all 1s ease-in;
+
+  &--loaded {
+    transform: scale(1);
+  }
 
   @include atSmall {
     &__medium-6 {

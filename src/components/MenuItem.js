@@ -1,10 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const MenuItem = props => {
   return (
     <li>
-      <Link to={props.route}>{props.text}</Link>
+      <NavLink to={props.route} exact activeClassName="current-page">
+        {props.text}
+      </NavLink>
     </li>
   );
 };

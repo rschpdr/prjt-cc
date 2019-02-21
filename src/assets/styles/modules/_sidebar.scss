@@ -17,10 +17,23 @@
     ul {
       list-style: none;
 
+      li > a,
+      span {
+        border-left: 3px solid transparent;
+        padding-left: 8px;
+        cursor: pointer;
+      }
+
+      .current-page {
+        border-left: 3px solid $mainDarkGray;
+        transition: border-left 0.5s;
+      }
+
       ul {
         padding: 0 0 0 1rem;
         li {
           line-height: 1.8;
+          cursor: pointer;
         }
       }
     }

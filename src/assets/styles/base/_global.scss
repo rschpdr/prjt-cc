@@ -1,6 +1,8 @@
 body {
   font-family: 'Open Sans', sans-serif;
   color: $mainDarkGray;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 img {
