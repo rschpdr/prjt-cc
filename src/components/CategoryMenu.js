@@ -12,7 +12,17 @@ const CategoryMenu = props => {
     });
   };
 
-  return <ul>{renderCategories()}</ul>;
+  return (
+    <ul
+      className={
+        props.shouldShow
+          ? 'categories-menu categories-menu--visible'
+          : 'categories-menu'
+      }
+    >
+      {renderCategories()}
+    </ul>
+  );
 };
 
 export default CategoryMenu;

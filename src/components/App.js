@@ -79,7 +79,19 @@ class App extends Component {
               windowWidth={this.state.windowWidth}
               projects={this.state.projects}
             />
-            <Route
+            <Switch>
+              <Route
+                path="/"
+                exact
+                render={routeProps => (
+                  <Portfolio {...routeProps} projects={this.state.projects} />
+                )}
+              />
+              <Route path="/projetos/:id" exact component={Project} />
+              <Route path="/contato" exact component={ContactForm} />
+              <Route path="/sobre" exact component={About} />
+            </Switch>
+            {/* <Route
               render={({ location }) => (
                 <TransitionGroup>
                   <CSSTransition
@@ -105,7 +117,7 @@ class App extends Component {
                   </CSSTransition>
                 </TransitionGroup>
               )}
-            />
+            /> */}
           </div>
         </BrowserRouter>
       </div>

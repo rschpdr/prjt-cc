@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import { Flipper, Flipped } from 'react-flip-toolkit';
 import qs from 'query-string';
 
 class Portfolio extends Component {
@@ -11,25 +11,23 @@ class Portfolio extends Component {
     };
   }
 
-  componentDidMount() {
-    this.setState({ loaded: true });
-  }
-
   renderThumbnails = project => {
     return (
-      <Link key={project.id} to={`/projetos/${project.id}`}>
-        <div
-          className={`column column__large-4 column__medium-6 ${
-            this.state.loaded ? 'column--loaded' : null
-          }`}
-        >
-          <img
-            src={project.covers['404']}
-            alt={project.name}
-            title={project.name}
-          />
+      <Flipped key={project.id} flipId={project.id}>
+        <div className="column column__large-4 column__medium-6">
+          <Link to={`/projetos/${project.id}`}>
+            <div className="aspect aspect--4x3">
+              <div className="aspect__inner">
+                <img
+                  src={project.covers['404']}
+                  alt={project.name}
+                  title={project.name}
+                />
+              </div>
+            </div>
+          </Link>
         </div>
-      </Link>
+      </Flipped>
     );
   };
 
@@ -72,9 +70,11 @@ class Portfolio extends Component {
                 : null}
             </span>
           </div>
-          {queryString.filter !== undefined
-            ? this.filterProjects()
-            : this.renderProjects()}
+          <Flipper flipKey={queryString.filter}>
+            {queryString.filter !== undefined
+              ? this.filterProjects()
+              : this.renderProjects()}
+          </Flipper>
         </div>
       </div>
     );

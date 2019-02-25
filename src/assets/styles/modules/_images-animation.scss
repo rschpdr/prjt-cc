@@ -22,22 +22,23 @@
 
 .image-enter {
   opacity: 0.01;
-  transform: scale(0);
+  transform: translateX(-100px);
 }
 
 .image-enter-active {
   opacity: 1;
-  transform: scale(1);
+  transform: translateX(0px);
+  transition-delay: 0.25s; /* wait a bit for space to be made */
   transition: all 500ms;
 }
 
 .image-exit {
   opacity: 1;
-  transform: scale(1);
+  transform: translateX(0px);
 }
 
 .image-exit-active {
   opacity: 0.01;
-  transform: scale(0);
+  transform: translateX(100px);
   transition: all 500ms;
 }

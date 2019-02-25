@@ -76,12 +76,11 @@ class Sidebar extends Component {
                 <li onClick={this.onPortfolioClick}>
                   <span>Portfolio</span>
                 </li>
-                {this.state.portfolioToggle ? (
-                  <CategoryMenu
-                    categories={this.state.categories}
-                    onCategorieClick={this.props.onCategorieClick}
-                  />
-                ) : null}
+                <CategoryMenu
+                  categories={this.state.categories}
+                  onCategorieClick={this.props.onCategorieClick}
+                  shouldShow={this.state.portfolioToggle}
+                />
                 <MenuItem route="/contato" text="Contato" />
               </ul>
             </div>
