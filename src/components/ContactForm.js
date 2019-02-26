@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Fade from 'react-reveal/Fade';
 import axios from 'axios';
 import _ from 'lodash';
 import FormInput from './FormInput';
@@ -111,47 +112,61 @@ class ContactForm extends Component {
           className="contact-form"
           onSubmit={e => this.handleSubmit(e, errors)}
         >
-          <h1 className="content__title">
-            Contato
-            <strong className="content__title content__title--secondary">
-              Work with me!
-            </strong>
-          </h1>
-          <FormInput
-            element="input"
-            type="text"
-            name="nome"
-            placeholder="Nome"
-            onChange={this.handleChange}
-            onBlur={this.handleBlur}
-            error={shouldMarkError('nome', errors)}
-          />
-          <FormInput
-            element="input"
-            type="email"
-            name="email"
-            placeholder="E-mail"
-            onChange={this.handleChange}
-            onBlur={this.handleBlur}
-            error={shouldMarkError('email', errors)}
-          />
-          <FormInput
-            element="textarea"
-            type="text"
-            name="assunto"
-            placeholder="Assunto"
-            rows="5"
-            onChange={this.handleChange}
-            onBlur={this.handleBlur}
-            error={shouldMarkError('assunto', errors)}
-          />
+          <Fade bottom>
+            <h1 className="content__title">
+              Contato
+              <strong className="content__title content__title--secondary">
+                Work with me!
+              </strong>
+            </h1>
+          </Fade>
+          <Fade bottom>
+            <FormInput
+              element="input"
+              type="text"
+              name="nome"
+              placeholder="Nome"
+              onChange={this.handleChange}
+              onBlur={this.handleBlur}
+              error={shouldMarkError('nome', errors)}
+            />
+          </Fade>
+          <Fade bottom>
+            <FormInput
+              element="input"
+              type="email"
+              name="email"
+              placeholder="E-mail"
+              onChange={this.handleChange}
+              onBlur={this.handleBlur}
+              error={shouldMarkError('email', errors)}
+            />
+          </Fade>
+          <Fade bottom>
+            <FormInput
+              element="textarea"
+              type="text"
+              name="assunto"
+              placeholder="Assunto"
+              rows="5"
+              onChange={this.handleChange}
+              onBlur={this.handleBlur}
+              error={shouldMarkError('assunto', errors)}
+            />
+          </Fade>
           <div className="contact-form__result">
             {this.state.isPostingData === null ? (
-              <input className="btn btn--right" type="submit" value="Enviar" />
+              <Fade bottom>
+                <input
+                  className="btn btn--right"
+                  type="submit"
+                  value="Enviar"
+                />
+              </Fade>
             ) : this.state.isPostingData ? (
               <Spinner />
             ) : (
-              this.state.postResult
+              <Fade bottom>{this.state.postResult}</Fade>
             )}
           </div>
         </form>

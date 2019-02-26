@@ -41,13 +41,15 @@
     .categories-menu {
       li {
         max-height: 0;
+        visibility: hidden;
         opacity: 0;
-        transition: all 0.2s ease-in-out;
+        transition: all 0.5s ease-in-out;
       }
 
       &--visible {
         li {
           max-height: 9rem;
+          visibility: visible;
           opacity: 1;
         }
       }

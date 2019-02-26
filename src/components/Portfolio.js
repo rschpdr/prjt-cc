@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Flipper, Flipped } from 'react-flip-toolkit';
+import Fade from 'react-reveal/Fade';
 import qs from 'query-string';
 
 class Portfolio extends Component {
@@ -18,11 +19,13 @@ class Portfolio extends Component {
           <Link to={`/projetos/${project.id}`}>
             <div className="aspect aspect--4x3">
               <div className="aspect__inner">
-                <img
-                  src={project.covers['404']}
-                  alt={project.name}
-                  title={project.name}
-                />
+                <Fade>
+                  <img
+                    src={project.covers['404']}
+                    alt={project.name}
+                    title={project.name}
+                  />
+                </Fade>
               </div>
             </div>
           </Link>
@@ -61,21 +64,23 @@ class Portfolio extends Component {
 
     return (
       <div className="content">
-        <div className="row">
-          <div className="breadcrumb">
-            <span>Portfolio</span>
-            <span>
+        <Fade bottom>
+          <div className="row">
+            <div className="breadcrumb">
+              <span>Portfolio</span>
+              <span>
+                {queryString.filter !== undefined
+                  ? ` > ${queryString.filter}`
+                  : null}
+              </span>
+            </div>
+            <Flipper flipKey={queryString.filter}>
               {queryString.filter !== undefined
-                ? ` > ${queryString.filter}`
-                : null}
-            </span>
+                ? this.filterProjects()
+                : this.renderProjects()}
+            </Flipper>
           </div>
-          <Flipper flipKey={queryString.filter}>
-            {queryString.filter !== undefined
-              ? this.filterProjects()
-              : this.renderProjects()}
-          </Flipper>
-        </div>
+        </Fade>
       </div>
     );
   }
