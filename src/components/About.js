@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import Fade from 'react-reveal/Fade';
+import ImgLoader from './ImgLoader';
+const LazyImg = lazy(() => import('./LazyImg'));
 
 const About = () => {
   return (
     <div className="content">
       <Fade>
-        <img
-          src="http://via.placeholder.com/885x460"
-          alt="description"
-          title="title"
-          className="content__image"
-        />
+        <Suspense fallback={<ImgLoader paddingBottom="52%" />}>
+          <LazyImg
+            src="http://via.placeholder.com/885x460"
+            alt="description"
+            title="title"
+            className="content__image"
+          />
+        </Suspense>
       </Fade>
       <div className="content__description">
         <Fade bottom>
