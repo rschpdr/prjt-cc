@@ -1,12 +1,27 @@
 import React, { Component } from 'react';
+import Fade from 'react-reveal/Fade';
 import jsonp from 'jsonp';
+import Spinner from './Spinner';
 
 const API_KEY = 'x8fCQnDWe9hC20uZ7vgnmvWXuf9pplBb';
 const URL = `https://api.behance.net/v2/projects`;
 const USERNAME = 'carolcarretto';
 
+const imagesLoaded = parentElement => {
+  const imgs = parentElement.querySelectorAll('img');
+  [...imgs].map(img => {
+    if (!img.complete) {
+      return false;
+    }
+  });
+  return true;
+};
+
 class Project extends Component {
-  state = { project: [] };
+  state = {
+    project: [],
+    loading: true
+  };
 
   fetchData = async id => {
     // Search sessionStorage for projects array. If present, set state to it. If not, proceed to the API call.
@@ -47,6 +62,17 @@ class Project extends Component {
     this.fetchData(id);
   }
 
+  handleImageLoad = () => {
+    this.setState({ loaded: !imagesLoaded(this.container) });
+  };
+
+  renderSpinner() {
+    if (!this.state.loading) {
+      return null;
+    }
+    return <Spinner />;
+  }
+
   renderModules() {
     if (this.state.project.modules !== undefined) {
       return this.state.project.modules.map(module => {
@@ -57,24 +83,38 @@ class Project extends Component {
               'text/html'
             );
             return (
-              <div
-                key={module.id}
-                className="content__paragraph"
-                dangerouslySetInnerHTML={{ __html: doc.body.innerHTML }}
-              />
+              <Fade>
+                <div
+                  key={module.id}
+                  className='content__paragraph'
+                  dangerouslySetInnerHTML={{ __html: doc.body.innerHTML }}
+                />
+              </Fade>
             );
           case 'image':
             return (
-              <img alt={module.caption} src={module.src} key={module.id} />
+              <Fade>
+                <img
+                  alt={module.caption}
+                  src={module.src}
+                  key={module.id}
+                  onLoad={this.handleImageLoad}
+                  onError={this.handleImageLoad}
+                />
+              </Fade>
             );
           case 'media_collection':
             return module.components.map(component => {
               return (
-                <img
-                  alt={component.caption}
-                  src={component.src}
-                  key={component.id}
-                />
+                <Fade>
+                  <img
+                    alt={component.caption}
+                    src={component.src}
+                    key={component.id}
+                    onLoad={this.handleImageLoad}
+                    onError={this.handleImageLoad}
+                  />
+                </Fade>
               );
             });
           default:
@@ -89,12 +129,20 @@ class Project extends Component {
       return <div>Loading...</div>;
     }
     return (
-      <div className="content">
-        <div className="row">
-          <div className="content__description">
-            <h1 className="content__title">{this.state.project.name}</h1>
-            {this.renderModules()}
-          </div>
+      <div className='content'>
+        <div className='row'>
+          <Fade>
+            {this.renderSpinner()}
+            <div
+              className='content__description'
+              ref={el => {
+                this.container = el;
+              }}
+            >
+              <h1 className='content__title'>{this.state.project.name}</h1>
+              {this.renderModules()}
+            </div>
+          </Fade>
         </div>
       </div>
     );
