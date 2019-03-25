@@ -1,14 +1,22 @@
-input[type='submit'].btn {
+button.btn {
   position: relative;
-  padding: 15px;
-  background-color: $mainDarkGray;
-  color: #fff;
-  width: 25%;
+  padding: 0;
+  background-color: transparent;
+  color: $orange;
+  height: 2rem;
+  width: 30%;
   float: right;
   cursor: pointer;
   outline: none;
   box-shadow: none;
-
+  border: 2px solid $orange;
+  transition: all 0.2s ease-out;
+  &:hover,
+  &:active {
+    background-color: $orange;
+    color: #fff;
+    border: transparent;
+  }
   &--right {
     margin-left: auto;
   }

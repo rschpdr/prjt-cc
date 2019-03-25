@@ -1,5 +1,7 @@
 body {
   font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
   color: $mainDarkGray;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -14,7 +16,7 @@ img {
   box-sizing: border-box;
 }
 
-li > a {
+li>a {
   text-decoration: none;
   color: $mainDarkGray;
 }

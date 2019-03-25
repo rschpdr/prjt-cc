@@ -4,7 +4,7 @@ const FormInput = props => {
   const CustomTag = props.element;
   const className = props.error ? 'error' : '';
   return (
-    <div className="contact-form__input">
+    <div className='contact-form__input'>
       <CustomTag
         className={className}
         type={props.type}

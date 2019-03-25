@@ -5,24 +5,24 @@ const LazyImg = lazy(() => import('./LazyImg'));
 
 const About = () => {
   return (
-    <div className="content">
+    <div className='content'>
       <Fade>
-        <Suspense fallback={<ImgLoader paddingBottom="52%" />}>
+        <Suspense fallback={<ImgLoader paddingBottom='52%' />}>
           <LazyImg
-            src="http://via.placeholder.com/885x460"
-            alt="description"
-            title="title"
-            className="content__image"
+            src='http://via.placeholder.com/885x460'
+            alt='description'
+            title='title'
+            className='content__image'
           />
         </Suspense>
       </Fade>
-      <div className="content__description">
+      <div className='content__description'>
         <Fade bottom>
-          <span>sobre</span>
-          <h1 className="content__title">Quem sou eu?</h1>
+          <span className='content__title--secondary'>sobre</span>
+          <h1 className='content__title'>Quem sou eu?</h1>
         </Fade>
         <Fade bottom>
-          <p className="content__paragraph">
+          <p className='content__paragraph'>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -33,7 +33,7 @@ const About = () => {
           </p>
         </Fade>
         <Fade bottom>
-          <p className="content__paragraph">
+          <p className='content__paragraph'>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut

@@ -63,14 +63,23 @@ class Project extends Component {
   }
 
   handleImageLoad = () => {
-    this.setState({ loaded: !imagesLoaded(this.container) });
+    this.setState({ loading: !imagesLoaded(this.container) });
   };
 
   renderSpinner() {
     if (!this.state.loading) {
       return null;
     }
-    return <Spinner />;
+    return (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center'
+        }}
+      >
+        <Spinner />
+      </div>
+    );
   }
 
   renderModules() {
@@ -83,9 +92,8 @@ class Project extends Component {
               'text/html'
             );
             return (
-              <Fade>
+              <Fade key={module.id}>
                 <div
-                  key={module.id}
                   className='content__paragraph'
                   dangerouslySetInnerHTML={{ __html: doc.body.innerHTML }}
                 />
@@ -93,30 +101,34 @@ class Project extends Component {
             );
           case 'image':
             return (
-              <Fade>
+              <Fade key={module.id}>
                 <img
                   alt={module.caption}
                   src={module.src}
-                  key={module.id}
                   onLoad={this.handleImageLoad}
                   onError={this.handleImageLoad}
                 />
               </Fade>
             );
           case 'media_collection':
-            return module.components.map(component => {
-              return (
-                <Fade>
-                  <img
-                    alt={component.caption}
-                    src={component.src}
-                    key={component.id}
-                    onLoad={this.handleImageLoad}
-                    onError={this.handleImageLoad}
-                  />
-                </Fade>
-              );
-            });
+            return (
+              <div className='content__media-gallery'>
+                {module.components.map(component => {
+                  return (
+                    <Fade key={component.id}>
+                      <div className='content__media-gallery__item'>
+                        <img
+                          alt={component.caption}
+                          src={component.src}
+                          onLoad={this.handleImageLoad}
+                          onError={this.handleImageLoad}
+                        />
+                      </div>
+                    </Fade>
+                  );
+                })}
+              </div>
+            );
           default:
             return null;
         }
@@ -131,8 +143,11 @@ class Project extends Component {
     return (
       <div className='content'>
         <div className='row'>
+          <div className='breadcrumb'>
+            <span>Portfolio > Projetos</span>
+            <span>{` > ${this.state.project.name}`}</span>
+          </div>
           <Fade>
-            {this.renderSpinner()}
             <div
               className='content__description'
               ref={el => {
@@ -140,6 +155,7 @@ class Project extends Component {
               }}
             >
               <h1 className='content__title'>{this.state.project.name}</h1>
+              {this.renderSpinner()}
               {this.renderModules()}
             </div>
           </Fade>

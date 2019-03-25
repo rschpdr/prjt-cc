@@ -107,25 +107,25 @@ class ContactForm extends Component {
     };
 
     return (
-      <div className="content content--gray-bg">
+      <div className='content content--gray-bg'>
         <form
-          className="contact-form"
+          className='contact-form'
           onSubmit={e => this.handleSubmit(e, errors)}
         >
           <Fade bottom>
-            <h1 className="content__title">
+            <h1 className='content__title'>
               Contato
-              <strong className="content__title content__title--secondary">
+              <strong className='content__title content__title--secondary'>
                 Work with me!
               </strong>
             </h1>
           </Fade>
           <Fade bottom>
             <FormInput
-              element="input"
-              type="text"
-              name="nome"
-              placeholder="Nome"
+              element='input'
+              type='text'
+              name='nome'
+              placeholder='Nome'
               onChange={this.handleChange}
               onBlur={this.handleBlur}
               error={shouldMarkError('nome', errors)}
@@ -133,10 +133,10 @@ class ContactForm extends Component {
           </Fade>
           <Fade bottom>
             <FormInput
-              element="input"
-              type="email"
-              name="email"
-              placeholder="E-mail"
+              element='input'
+              type='email'
+              name='email'
+              placeholder='E-mail'
               onChange={this.handleChange}
               onBlur={this.handleBlur}
               error={shouldMarkError('email', errors)}
@@ -144,24 +144,22 @@ class ContactForm extends Component {
           </Fade>
           <Fade bottom>
             <FormInput
-              element="textarea"
-              type="text"
-              name="assunto"
-              placeholder="Assunto"
-              rows="5"
+              element='textarea'
+              type='text'
+              name='assunto'
+              placeholder='Assunto'
+              rows='5'
               onChange={this.handleChange}
               onBlur={this.handleBlur}
               error={shouldMarkError('assunto', errors)}
             />
           </Fade>
-          <div className="contact-form__result">
+          <div className='contact-form__result'>
             {this.state.isPostingData === null ? (
               <Fade bottom>
-                <input
-                  className="btn btn--right"
-                  type="submit"
-                  value="Enviar"
-                />
+                <button className='btn btn--right' type='submit'>
+                  Enviar
+                </button>
               </Fade>
             ) : this.state.isPostingData ? (
               <Spinner />
