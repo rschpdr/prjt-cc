@@ -1,7 +1,6 @@
 import '../assets/styles/styles.scss';
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import _ from 'lodash';
 import jsonp from 'jsonp';
 import Sidebar from './Sidebar';
@@ -73,7 +72,7 @@ class App extends Component {
     return (
       <div>
         <BrowserRouter>
-          <div className="wrapper">
+          <div className='wrapper'>
             <Sidebar
               onCategorieClick={this.onCategorieClick}
               windowWidth={this.state.windowWidth}
@@ -81,15 +80,15 @@ class App extends Component {
             />
             <Switch>
               <Route
-                path="/"
+                path='/'
                 exact
                 render={routeProps => (
                   <Portfolio {...routeProps} projects={this.state.projects} />
                 )}
               />
-              <Route path="/projetos/:id" exact component={Project} />
-              <Route path="/contato" exact component={ContactForm} />
-              <Route path="/sobre" exact component={About} />
+              <Route path='/projetos/:id' exact component={Project} />
+              <Route path='/contato' exact component={ContactForm} />
+              <Route path='/sobre' exact component={About} />
             </Switch>
             {/* <Route
               render={({ location }) => (

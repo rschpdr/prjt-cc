@@ -1,7 +1,6 @@
 import React, { Component, lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { Flipper, Flipped } from 'react-flip-toolkit';
-import Fade from 'react-reveal/Fade';
 import qs from 'query-string';
 import ImgLoader from './ImgLoader';
 const LazyImg = lazy(() => import('./LazyImg'));
@@ -16,10 +15,18 @@ class Portfolio extends Component {
 
   renderThumbnails = project => {
     return (
-      <Flipped key={project.id} flipId={project.id}>
-        <div className="column column__large-4 column__medium-6">
+      <Flipped
+        key={project.id}
+        flipId={project.id}
+        onExit={el => {
+          setTimeout(() => {
+            el.classList.add('animated-out');
+          }, 300);
+        }}
+      >
+        <div className='column column__large-4 column__medium-6'>
           <Link to={`/projetos/${project.id}`}>
-            <Suspense fallback={<ImgLoader paddingBottom="78%" />}>
+            <Suspense fallback={<ImgLoader paddingBottom='78%' />}>
               <LazyImg
                 src={project.covers['404']}
                 alt={project.name}
@@ -40,11 +47,11 @@ class Portfolio extends Component {
 
   filterProjects = () => {
     const queryString = this.parseQueryString();
-    return this.props.projects.map(project => {
-      if (project.fields.includes(queryString.filter)) {
-        return this.renderThumbnails(project);
-      }
-      return null;
+    const filteredProjects = this.props.projects.filter(project =>
+      project.fields.includes(queryString.filter)
+    );
+    return filteredProjects.map(project => {
+      return this.renderThumbnails(project);
     });
   };
 
@@ -61,24 +68,22 @@ class Portfolio extends Component {
     }
 
     return (
-      <div className="content">
-        <Fade bottom>
-          <div className="row">
-            <div className="breadcrumb">
-              <span>Portfolio</span>
-              <span>
-                {queryString.filter !== undefined
-                  ? ` > ${queryString.filter}`
-                  : null}
-              </span>
-            </div>
-            <Flipper flipKey={queryString.filter}>
+      <div className='content'>
+        <div className='row'>
+          <div className='breadcrumb'>
+            <span>Portfolio</span>
+            <span>
               {queryString.filter !== undefined
-                ? this.filterProjects()
-                : this.renderProjects()}
-            </Flipper>
+                ? ` > ${queryString.filter}`
+                : null}
+            </span>
           </div>
-        </Fade>
+          <Flipper flipKey={queryString.filter}>
+            {queryString.filter !== undefined
+              ? this.filterProjects()
+              : this.renderProjects()}
+          </Flipper>
+        </div>
       </div>
     );
   }
