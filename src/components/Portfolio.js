@@ -1,6 +1,7 @@
 import React, { Component, lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { Flipper, Flipped } from 'react-flip-toolkit';
+import Fade from 'react-reveal/Fade';
 import qs from 'query-string';
 import ImgLoader from './ImgLoader';
 const LazyImg = lazy(() => import('./LazyImg'));
@@ -21,12 +22,12 @@ class Portfolio extends Component {
         onExit={el => {
           setTimeout(() => {
             el.classList.add('animated-out');
-          }, 300);
+          }, 10);
         }}
       >
-        <div className='column column__large-4 column__medium-6'>
+        <div className="column column__large-4 column__medium-6">
           <Link to={`/projetos/${project.id}`}>
-            <Suspense fallback={<ImgLoader paddingBottom='78%' />}>
+            <Suspense fallback={<ImgLoader paddingBottom="78%" />}>
               <LazyImg
                 src={project.covers['404']}
                 alt={project.name}
@@ -68,9 +69,9 @@ class Portfolio extends Component {
     }
 
     return (
-      <div className='content'>
-        <div className='row'>
-          <div className='breadcrumb'>
+      <div className="content">
+        <div className="row">
+          <div className="breadcrumb">
             <span>Portfolio</span>
             <span>
               {queryString.filter !== undefined
@@ -78,11 +79,13 @@ class Portfolio extends Component {
                 : null}
             </span>
           </div>
-          <Flipper flipKey={queryString.filter}>
-            {queryString.filter !== undefined
-              ? this.filterProjects()
-              : this.renderProjects()}
-          </Flipper>
+          <Fade>
+            <Flipper flipKey={queryString.filter}>
+              {queryString.filter !== undefined
+                ? this.filterProjects()
+                : this.renderProjects()}
+            </Flipper>
+          </Fade>
         </div>
       </div>
     );

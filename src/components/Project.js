@@ -94,7 +94,7 @@ class Project extends Component {
             return (
               <Fade key={module.id}>
                 <div
-                  className='content__paragraph'
+                  className="content__paragraph"
                   dangerouslySetInnerHTML={{ __html: doc.body.innerHTML }}
                 />
               </Fade>
@@ -112,11 +112,11 @@ class Project extends Component {
             );
           case 'media_collection':
             return (
-              <div className='content__media-gallery'>
+              <div key={module.id} className="content__media-gallery">
                 {module.components.map(component => {
                   return (
                     <Fade key={component.id}>
-                      <div className='content__media-gallery__item'>
+                      <div className="content__media-gallery__item">
                         <img
                           alt={component.caption}
                           src={component.src}
@@ -141,20 +141,20 @@ class Project extends Component {
       return <div>Loading...</div>;
     }
     return (
-      <div className='content'>
-        <div className='row'>
-          <div className='breadcrumb'>
+      <div className="content">
+        <div className="row">
+          <div className="breadcrumb">
             <span>Portfolio > Projetos</span>
             <span>{` > ${this.state.project.name}`}</span>
           </div>
           <Fade>
             <div
-              className='content__description'
+              className="content__description"
               ref={el => {
                 this.container = el;
               }}
             >
-              <h1 className='content__title'>{this.state.project.name}</h1>
+              <h1 className="content__title">{this.state.project.name}</h1>
               {this.renderSpinner()}
               {this.renderModules()}
             </div>
