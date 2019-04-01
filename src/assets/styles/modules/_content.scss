@@ -2,16 +2,19 @@
   &__image {
     padding: 5rem 0 2rem 0;
   }
+
   @include atSmallMedium {
     img {
       padding-top: 3rem;
     }
   }
+
   @include atMedium {
     img {
       padding-top: 0;
     }
   }
+
   @include atLarge {
     &--gray-bg {
       position: absolute;
@@ -21,48 +24,61 @@
       background-color: $lightGray;
     }
   }
+
   &__description {
     padding: 4rem 0.9375rem 3.75rem 0.9375rem;
+
     @include atLarge {
       padding: 0 0.9375rem 3.75rem 0.9375rem;
     }
   }
+
   &__title {
     margin: 0;
     font-size: 1.25rem;
     font-style: italic;
     font-weight: 400;
     padding-bottom: 1.5rem;
+
     &--secondary {
       color: $orange;
       display: inline-block;
       padding-bottom: 1.5rem;
     }
   }
+
   &__paragraph {
     font-size: 0.875rem; //padding-bottom: 5.75rem;
+
     span {
       font-family: 'Montserrat', sans-serif !important;
     }
+
     &--less-padding {
       padding-bottom: 3.75rem;
     }
+
     &--push-down {
       margin-top: 90px;
     }
   }
+
   &__media-gallery {
     display: flex;
+
     &__item {
       flex: 1;
       padding: 1px;
     }
   }
+
   @include atLarge {
     margin-left: 25%;
+
     &__description {
       padding: 0 0 5.75rem 0;
     }
+
     &__title {
       padding-bottom: 1.5rem;
     }

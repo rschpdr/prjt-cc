@@ -1,26 +1,29 @@
 .social-icons {
   text-align: left;
   margin-bottom: 1.5rem;
-  margin-left: 2rem;
+
   &__icon {
     display: inline-block;
     position: relative;
     padding: 7px;
+
     @include atSmall {
       width: 32px;
-      margin: 0 5px;
     }
+
     .icon {
       display: block;
-      transform: scale(0.8);
+      fill: #333;
     }
   }
+
   @include atSmallMedium {
     position: absolute;
     bottom: 4rem;
     margin-bottom: 0;
     margin-left: 0;
   }
+
   @include atLarge {
     margin-bottom: 1.5rem;
   }

@@ -21,13 +21,13 @@ class Portfolio extends Component {
         flipId={project.id}
         onExit={el => {
           setTimeout(() => {
-            el.classList.add('animated-out');
+            el.classList.add('column--animated-out');
           }, 10);
         }}
       >
-        <div className="column column__large-4 column__medium-6">
+        <div className='column column__large-4 column__medium-6'>
           <Link to={`/projetos/${project.id}`}>
-            <Suspense fallback={<ImgLoader paddingBottom="78%" />}>
+            <Suspense fallback={<ImgLoader paddingBottom='78%' />}>
               <LazyImg
                 src={project.covers['404']}
                 alt={project.name}
@@ -69,9 +69,9 @@ class Portfolio extends Component {
     }
 
     return (
-      <div className="content">
-        <div className="row">
-          <div className="breadcrumb">
+      <div className='content'>
+        <div className='row'>
+          <div className='breadcrumb'>
             <span>Portfolio</span>
             <span>
               {queryString.filter !== undefined

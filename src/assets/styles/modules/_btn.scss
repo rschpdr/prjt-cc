@@ -11,12 +11,14 @@ button.btn {
   box-shadow: none;
   border: 2px solid $orange;
   transition: all 0.2s ease-out;
+
   &:hover,
   &:active {
     background-color: $orange;
     color: #fff;
     border: transparent;
   }
+
   &--right {
     margin-left: auto;
   }

@@ -1,9 +1,12 @@
 .contact-form {
   padding-left: 1.5rem;
-  position: absolute;
-  top: 50%;
+  position: relative;
+  width: max-content;
+  top: -50%;
   z-index: 0;
-  transform: translateY(-50%);
+  transform: translateY(50%);
+  padding-top: 3rem;
+  padding-left: 2rem;
 
   @include atSmall {
     padding-left: 4.5rem;
@@ -15,6 +18,8 @@
 
   @include atLarge {
     padding-left: 7.5rem;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   &__input {

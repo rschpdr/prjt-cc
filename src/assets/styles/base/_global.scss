@@ -16,7 +16,7 @@ img {
   box-sizing: border-box;
 }
 
-li > a {
+li>a {
   text-decoration: none;
   color: $mainDarkGray;
 }
@@ -35,10 +35,4 @@ hr {
   border-bottom: 0;
   width: 90px;
   float: left;
-}
-
-.animated-out {
-  visibility: hidden;
-  opacity: 0;
-  transition: all 0.3s ease-out;
 }

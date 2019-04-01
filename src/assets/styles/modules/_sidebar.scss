@@ -4,33 +4,41 @@
   position: relative;
   height: 100%;
   width: 100%;
+
   &__logo {
     margin: 25% 0 0 1.25rem;
     transform: scale(0.8);
   }
+
   &__menu {
     margin-top: 20%;
     flex-grow: 1;
+
     ul {
       list-style: none;
-      li > a,
+
+      li>a,
       span {
         border-left: 2px solid transparent;
         padding-left: 8px;
         cursor: pointer;
       }
+
       .current-page {
         border-left: 2px solid $mainDarkGray;
         transition: border-left 0.5s;
       }
+
       ul {
         padding: 0 0 0 1rem;
+
         li {
           line-height: 1.8;
           cursor: pointer;
         }
       }
     }
+
     .categories-menu {
       li {
         max-height: 0;
@@ -39,10 +47,12 @@
         transition: all 0.5s ease-in-out;
         font-size: 0.8rem;
         font-style: italic;
+
         a {
           color: $mediumGray;
         }
       }
+
       &--visible {
         li {
           max-height: 9rem;
@@ -52,34 +62,42 @@
       }
     }
   }
+
   @include atSmallMedium {
+
     &__logo {
       transform: scale(1);
     }
+
     &__menu {
       margin-top: 70%;
       flex-grow: 1;
     }
   }
+
   @include atMedium {
     &__menu {
       margin-top: 40%;
       flex-grow: 1;
     }
   }
+
   @include atLarge {
     @include atPortrait {
       &__menu {
         margin-top: 140% !important;
       }
     }
+
     &__logo {
       margin: 0 0 0 1.25rem;
       transform: scale(1);
     }
+
     &__menu {
       margin-top: 30%;
       flex-grow: 1;
+
       ul {
         padding: 0 0 0 1rem;
         line-height: 1.6;
