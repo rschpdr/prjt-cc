@@ -5,7 +5,6 @@
   left: 0;
   top: 0;
   background-color: #fff;
-  z-index: 2;
 
   @include atLarge {
     display: none;
@@ -21,6 +20,7 @@
     transform: translateX(50%);
 
     cursor: pointer;
+
     &::before {
       content: '';
       position: absolute;

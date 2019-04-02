@@ -21,6 +21,15 @@ const CategoryMenu = props => {
       }
     >
       {renderCategories()}
+      <li>
+        <a>Filler</a>
+      </li>
+      <li>
+        <a>Filler</a>
+      </li>
+      <li>
+        <a>Filler</a>
+      </li>
     </ul>
   );
 };
