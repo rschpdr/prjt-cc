@@ -74,6 +74,10 @@
     }
   }
 
+  @include atSmallMedium {
+    padding-top: 0;
+  }
+
   @include atLarge {
     margin-left: 25%;
 

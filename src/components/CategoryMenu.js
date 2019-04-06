@@ -30,6 +30,9 @@ const CategoryMenu = props => {
       <li>
         <a>Filler</a>
       </li>
+      <li>
+        <a>Filler</a>
+      </li>
     </ul>
   );
 };

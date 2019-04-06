@@ -1,6 +1,6 @@
 import logo from '../assets/images/logo.png';
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import _ from 'lodash';
 import MenuItem from './MenuItem';
 import CategoryMenu from './CategoryMenu';
@@ -16,6 +16,12 @@ class Sidebar extends Component {
       portfolioToggle: false,
       sidebarToggle: false
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) {
+      this.toggleSidebar();
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -56,23 +62,23 @@ class Sidebar extends Component {
   render() {
     return (
       <>
-        <header className='header-menu'>
-          <div className='header-menu__icon' onClick={this.toggleSidebar}>
-            <div className='header-menu__icon__middle' />
+        <header className="header-menu">
+          <div className="header-menu__icon" onClick={this.toggleSidebar}>
+            <div className="header-menu__icon__middle" />
           </div>
         </header>
         <div className={this.setSidebarVisibility()}>
-          <div className='sidebar'>
-            <div className='sidebar__logo'>
-              <Link to='/'>
-                <img src={logo} className='sidebar__logo-img' alt='logo' />
+          <div className="sidebar">
+            <div className="sidebar__logo">
+              <Link to="/">
+                <img src={logo} className="sidebar__logo-img" alt="logo" />
               </Link>
             </div>
 
-            <div className='sidebar__menu'>
+            <div className="sidebar__menu">
               <ul>
-                <MenuItem route='/' text='Início' />
-                <MenuItem route='/sobre' text='Sobre' />
+                <MenuItem route="/" text="Início" />
+                <MenuItem route="/sobre" text="Sobre" />
                 <li onClick={this.onPortfolioClick}>
                   <span>Portfolio</span>
                 </li>
@@ -81,34 +87,34 @@ class Sidebar extends Component {
                   onCategorieClick={this.props.onCategorieClick}
                   shouldShow={this.state.portfolioToggle}
                 />
-                <MenuItem route='/contato' text='Contato' />
+                <MenuItem route="/contato" text="Contato" />
               </ul>
             </div>
 
-            <div className='social-icons'>
+            <div className="social-icons">
               <a
-                href='https://www.facebook.com/carolcarrettoart/'
-                className='social-icons__icon'
+                href="https://www.facebook.com/carolcarrettoart/"
+                className="social-icons__icon"
               >
-                <Icon height={iconSize} width={iconSize} name='facebook' />
+                <Icon height={iconSize} width={iconSize} name="facebook" />
               </a>
               <a
-                href='https://www.instagram.com/carolcarretto/'
-                className='social-icons__icon'
+                href="https://www.instagram.com/carolcarretto/"
+                className="social-icons__icon"
               >
-                <Icon height={iconSize} width={iconSize} name='instagram' />
+                <Icon height={iconSize} width={iconSize} name="instagram" />
               </a>
               <a
-                href='https://dribbble.com/carolcarretto'
-                className='social-icons__icon'
+                href="https://dribbble.com/carolcarretto"
+                className="social-icons__icon"
               >
-                <Icon height={iconSize} width={iconSize} name='dribbble' />
+                <Icon height={iconSize} width={iconSize} name="dribbble" />
               </a>
               <a
-                href='https://www.behance.net/carolcarretto'
-                className='social-icons__icon'
+                href="https://www.behance.net/carolcarretto"
+                className="social-icons__icon"
               >
-                <Icon height={iconSize} width={iconSize} name='behance' />
+                <Icon height={iconSize} width={iconSize} name="behance" />
               </a>
             </div>
           </div>
@@ -118,4 +124,4 @@ class Sidebar extends Component {
   }
 }
 
-export default Sidebar;
+export default withRouter(Sidebar);

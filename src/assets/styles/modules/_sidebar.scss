@@ -4,6 +4,7 @@
   position: relative;
   height: 100%;
   width: 100%;
+  overflow-y: scroll;
 
   &__logo {
     margin: 25% 0 0 1.25rem;
@@ -40,12 +41,12 @@
     }
 
     .categories-menu {
-      position: absolute;
+      overflow: hidden;
       visibility: hidden;
+      max-height: 0;
       opacity: 0;
       z-index: 2;
-      transition: all 0.2s ease-in-out;
-      transform: scaleY(0);
+      transition: all 0.3s ease-in-out;
       transform-origin: top left;
 
       li {
@@ -58,12 +59,9 @@
       }
 
       &--visible {
-        background-color: #fff;
-        box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.05);
-        padding: 0.8rem;
         visibility: visible;
+        max-height: 20rem;
         opacity: 1;
-        transform: scaleY(1);
       }
     }
   }
