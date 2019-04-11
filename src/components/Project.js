@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import Fade from 'react-reveal/Fade';
 import jsonp from 'jsonp';
+import { USERNAME, BEHANCE_API_BASE_URL } from '../constants';
 import Spinner from './Spinner';
-
-const API_KEY = 'x8fCQnDWe9hC20uZ7vgnmvWXuf9pplBb';
-const URL = `https://api.behance.net/v2/projects`;
-const USERNAME = 'carolcarretto';
 
 const imagesLoaded = parentElement => {
   const imgs = parentElement.querySelectorAll('img');
@@ -13,6 +10,7 @@ const imagesLoaded = parentElement => {
     if (!img.complete) {
       return false;
     }
+    return true;
   });
   return true;
 };
@@ -33,7 +31,9 @@ class Project extends Component {
 
     // If no data is found in sessionStorage, make an API call, then save result to sessionStorage.
     const response = await jsonp(
-      `${URL}/${id}?client_id=${API_KEY}`,
+      `${BEHANCE_API_BASE_URL}/projects/${id}?client_id=${
+        process.env.REACT_APP_BEHANCE_API_KEY
+      }`,
       null,
       (err, data) => {
         if (err) {
@@ -94,7 +94,7 @@ class Project extends Component {
             return (
               <Fade key={module.id}>
                 <div
-                  className='content__paragraph'
+                  className="content__paragraph"
                   dangerouslySetInnerHTML={{ __html: doc.body.innerHTML }}
                 />
               </Fade>
@@ -104,7 +104,7 @@ class Project extends Component {
               <Fade key={module.id}>
                 <img
                   alt={module.caption}
-                  src={module.src}
+                  src={module.sizes.original}
                   onLoad={this.handleImageLoad}
                   onError={this.handleImageLoad}
                 />
@@ -112,11 +112,11 @@ class Project extends Component {
             );
           case 'media_collection':
             return (
-              <div key={module.id} className='content__media-gallery'>
+              <div key={module.id} className="content__media-gallery">
                 {module.components.map(component => {
                   return (
                     <Fade key={component.id}>
-                      <div className='content__media-gallery__item'>
+                      <div className="content__media-gallery__item">
                         <img
                           alt={component.caption}
                           src={component.src}
@@ -137,23 +137,24 @@ class Project extends Component {
   }
 
   render() {
+    console.log(process.env);
     if (!this.state.project) {
       return <div>Loading...</div>;
     }
     return (
-      <div className='content'>
-        <div className='row'>
-          <div className='breadcrumb'>
+      <div className="content">
+        <div className="row">
+          <div className="breadcrumb">
             <span>{`Portfolio > Projetos > ${this.state.project.name}`}</span>
           </div>
           <Fade>
             <div
-              className='content__description'
+              className="content__description"
               ref={el => {
                 this.container = el;
               }}
             >
-              <h1 className='content__title'>{this.state.project.name}</h1>
+              <h1 className="content__title">{this.state.project.name}</h1>
               {this.renderSpinner()}
               {this.renderModules()}
             </div>

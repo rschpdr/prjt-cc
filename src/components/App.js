@@ -3,15 +3,12 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import _ from 'lodash';
 import jsonp from 'jsonp';
+import { USERNAME, BEHANCE_API_BASE_URL } from '../constants';
 import Sidebar from './Sidebar';
 import Portfolio from './Portfolio';
 import Project from './Project';
 import ContactForm from './ContactForm';
 import About from './About';
-
-const API_KEY = 'x8fCQnDWe9hC20uZ7vgnmvWXuf9pplBb';
-const USERNAME = 'carolcarretto';
-const URL = `https://api.behance.net/v2/users/${USERNAME}/projects?client_id=${API_KEY}`;
 
 class App extends Component {
   constructor(props) {
@@ -33,14 +30,20 @@ class App extends Component {
     }
 
     // If no data is found in sessionStorage, make an API call, then save result to sessionStorage.
-    const response = await jsonp(URL, null, (err, data) => {
-      if (err) {
-        console.log(err);
-      } else {
-        const { projects } = data;
-        this.onFetchResult(projects, 'projects');
+    const response = await jsonp(
+      `${BEHANCE_API_BASE_URL}/users/${USERNAME}/projects?client_id=${
+        process.env.REACT_APP_BEHANCE_API_KEY
+      }`,
+      null,
+      (err, data) => {
+        if (err) {
+          console.log(err);
+        } else {
+          const { projects } = data;
+          this.onFetchResult(projects, 'projects');
+        }
       }
-    });
+    );
     return response;
   };
 
