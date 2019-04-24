@@ -4,9 +4,11 @@ import jsonp from 'jsonp';
 import { USERNAME, BEHANCE_API_BASE_URL } from '../constants';
 import Spinner from './Spinner';
 
+const loadedArr = [];
+
 const imagesLoaded = parentElement => {
   const imgs = parentElement.querySelectorAll('img');
-  [...imgs].map(img => {
+  [...imgs].map((img, i) => {
     if (!img.complete) {
       return false;
     }
@@ -137,7 +139,6 @@ class Project extends Component {
   }
 
   render() {
-    console.log(process.env);
     if (!this.state.project) {
       return <div>Loading...</div>;
     }
@@ -156,7 +157,14 @@ class Project extends Component {
             >
               <h1 className="content__title">{this.state.project.name}</h1>
               {this.renderSpinner()}
-              {this.renderModules()}
+              <div
+                style={{
+                  opacity: this.state.loading ? 0 : 1,
+                  transition: 'opacity 0.5s ease-in-out'
+                }}
+              >
+                {this.renderModules()}
+              </div>
             </div>
           </Fade>
         </div>
