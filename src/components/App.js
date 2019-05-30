@@ -93,7 +93,11 @@ class App extends Component {
                 )}
               />
               <Route path="/projetos/:id" exact component={Project} />
-              <Route path="/contato" exact component={ContactForm} />
+              <Route
+                path="/contato"
+                exact
+                render={() => <ContactForm language={this.state.language} />}
+              />
               <Route
                 path="/sobre"
                 exact

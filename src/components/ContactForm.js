@@ -3,6 +3,7 @@ import Fade from 'react-reveal/Fade';
 import axios from 'axios';
 import _ from 'lodash';
 import FormInput from './FormInput';
+import { FORMCARRY_API_BASE_URL } from '../constants';
 import Spinner from './Spinner';
 import strings from '../strings';
 import handleTranslation from '../helpers/handleTranslation';
@@ -78,20 +79,24 @@ class ContactForm extends Component {
       this.setState({ isPostingData: true });
 
       const response = await axios.post(
-        'https://formcarry.com/s/S5Cq2p_d_Zj',
+        // 'https://formcarry.com/s/S5Cq2p_d_Zj',
+        `${FORMCARRY_API_BASE_URL}/${process.env.REACT_APP_FORMCARRY_API_KEY}`,
         data
       );
 
       if ((response.data.status = 200)) {
         this.setState({
           isPostingData: false,
-          postResult: 'Sua mensagem foi enviada! Logo entrarei em contato ;)'
+          postResult:
+            contact.submitMessages.success[
+              handleTranslation(this.props.language)
+            ]
         });
       } else {
         this.setState({
           isPostingData: false,
           postResult:
-            'Desculpe! Algo deu errado e sua mensagem não pôde ser enviada. Por favor, me avise pelas redes sociais ou e-mail.'
+            contact.submitMessages.error[handleTranslation(this.props.language)]
         });
       }
       return response;
@@ -99,7 +104,7 @@ class ContactForm extends Component {
       this.setState({
         isPostingData: false,
         postResult:
-          'Desculpe! Algo deu errado e sua mensagem não pôde ser enviada. Por favor, me avise pelas redes sociais ou e-mail.'
+          contact.submitMessages.error[handleTranslation(this.props.language)]
       });
     }
   };
@@ -123,9 +128,9 @@ class ContactForm extends Component {
         >
           <Fade bottom>
             <h1 className="content__title">
-              Contato
+              {contact.header.pt}
               <strong className="content__title content__title--secondary">
-                Work with me!
+                {contact.header.en}
               </strong>
             </h1>
           </Fade>
@@ -134,7 +139,11 @@ class ContactForm extends Component {
               element="input"
               type="text"
               name="nome"
-              placeholder="Nome"
+              placeholder={
+                contact.inputPlaceholders.name[
+                  handleTranslation(this.props.language)
+                ]
+              }
               onChange={this.handleChange}
               onBlur={this.handleBlur}
               error={shouldMarkError('nome', errors)}
@@ -145,7 +154,11 @@ class ContactForm extends Component {
               element="input"
               type="email"
               name="email"
-              placeholder="E-mail"
+              placeholder={
+                contact.inputPlaceholders.email[
+                  handleTranslation(this.props.language)
+                ]
+              }
               onChange={this.handleChange}
               onBlur={this.handleBlur}
               error={shouldMarkError('email', errors)}
@@ -156,7 +169,11 @@ class ContactForm extends Component {
               element="textarea"
               type="text"
               name="assunto"
-              placeholder="Assunto"
+              placeholder={
+                contact.inputPlaceholders.message[
+                  handleTranslation(this.props.language)
+                ]
+              }
               rows="5"
               onChange={this.handleChange}
               onBlur={this.handleBlur}
@@ -167,7 +184,7 @@ class ContactForm extends Component {
             {this.state.isPostingData === null ? (
               <Fade bottom>
                 <button className="btn btn--right" type="submit">
-                  Enviar
+                  {contact.submitButton[handleTranslation(this.props.language)]}
                 </button>
               </Fade>
             ) : this.state.isPostingData ? (

@@ -29,7 +29,7 @@ const About = props => {
           }
         >
           <LazyImg
-            src="http://via.placeholder.com/885x460"
+            src={require('../assets/images/about.jpg')}
             alt="description"
             title="title"
             className="content__image"

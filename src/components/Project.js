@@ -4,8 +4,6 @@ import jsonp from 'jsonp';
 import { USERNAME, BEHANCE_API_BASE_URL } from '../constants';
 import Spinner from './Spinner';
 
-const loadedArr = [];
-
 const imagesLoaded = parentElement => {
   const imgs = parentElement.querySelectorAll('img');
   [...imgs].map((img, i) => {

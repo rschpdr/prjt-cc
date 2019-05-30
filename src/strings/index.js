@@ -101,6 +101,18 @@ export default {
       submitButton: {
         pt: 'Enviar',
         en: 'Send'
+      },
+      submitMessages: {
+        success: {
+          pt: 'Sua mensagem foi enviada! Logo entrarei em contato ;)',
+          en: "Your message has been sent! I'll get in touch soon ;)"
+        },
+        error: {
+          pt:
+            'Desculpe! Algo deu errado e sua mensagem não pôde ser enviada. Por favor, me avise pelas redes sociais ou e-mail.',
+          en:
+            'Sorry! There was an error and your message could not be sent. Please, contact me through social networks or e-mail.'
+        }
       }
     }
   }

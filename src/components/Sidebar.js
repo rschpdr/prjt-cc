@@ -1,10 +1,10 @@
-import logo from '../assets/images/logo.png';
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import _ from 'lodash';
 import MenuItem from './MenuItem';
 import CategoryMenu from './CategoryMenu';
 import Icon from './Icon';
+import Logo from './Logo';
 import strings from '../strings';
 import handleTranslation from '../helpers/handleTranslation';
 
@@ -74,7 +74,8 @@ class Sidebar extends Component {
           <div className="sidebar">
             <div className="sidebar__logo">
               <Link to="/">
-                <img src={logo} className="sidebar__logo-img" alt="logo" />
+                {/* <img src={Logo} className="sidebar__logo-img" alt="logo" /> */}
+                <Logo name="logo" />
               </Link>
             </div>
 
