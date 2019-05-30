@@ -1,9 +1,25 @@
 import React, { lazy, Suspense } from 'react';
 import Fade from 'react-reveal/Fade';
 import ImgLoader from './ImgLoader';
+import strings from '../strings';
+import handleTranslation from '../helpers/handleTranslation';
 const LazyImg = lazy(() => import('./LazyImg'));
 
-const About = () => {
+const { about } = strings.pages;
+
+const renderParagraphs = (paragraphs, language) => {
+  return paragraphs.map(paragraph => {
+    return (
+      <Fade bottom key={paragraph[handleTranslation(language)]}>
+        <p className="content__paragraph">
+          {paragraph[handleTranslation(language)]}
+        </p>
+      </Fade>
+    );
+  });
+};
+
+const About = props => {
   return (
     <div className="content">
       <Fade>
@@ -22,31 +38,14 @@ const About = () => {
       </Fade>
       <div className="content__description">
         <Fade bottom>
-          <span className="content__title--secondary">sobre</span>
-          <h1 className="content__title">Quem sou eu?</h1>
+          <span className="content__title--secondary">
+            {about.secondaryTitle[handleTranslation(props.language)]}
+          </span>
+          <h1 className="content__title">
+            {about.title[handleTranslation(props.language)]}
+          </h1>
         </Fade>
-        <Fade bottom>
-          <p className="content__paragraph">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-        </Fade>
-        <Fade bottom>
-          <p className="content__paragraph">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-        </Fade>
+        {renderParagraphs(about.paragraphs, props.language)}
       </div>
     </div>
   );

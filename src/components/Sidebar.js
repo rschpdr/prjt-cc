@@ -5,8 +5,11 @@ import _ from 'lodash';
 import MenuItem from './MenuItem';
 import CategoryMenu from './CategoryMenu';
 import Icon from './Icon';
+import strings from '../strings';
+import handleTranslation from '../helpers/handleTranslation';
 
 const iconSize = '20px';
+const { sidebarMenu } = strings.ui;
 
 class Sidebar extends Component {
   constructor(props) {
@@ -77,17 +80,38 @@ class Sidebar extends Component {
 
             <div className="sidebar__menu">
               <ul>
-                <MenuItem route="/" text="Início" />
-                <MenuItem route="/sobre" text="Sobre" />
+                <MenuItem
+                  route="/"
+                  text={
+                    sidebarMenu.home[handleTranslation(this.props.language)]
+                  }
+                />
+                <MenuItem
+                  route="/sobre"
+                  text={
+                    sidebarMenu.about[handleTranslation(this.props.language)]
+                  }
+                />
                 <li onClick={this.onPortfolioClick}>
-                  <span>Portfolio</span>
+                  <span>
+                    {
+                      sidebarMenu.portfolio[
+                        handleTranslation(this.props.language)
+                      ]
+                    }
+                  </span>
                 </li>
                 <CategoryMenu
                   categories={this.state.categories}
                   onCategorieClick={this.props.onCategorieClick}
                   shouldShow={this.state.portfolioToggle}
                 />
-                <MenuItem route="/contato" text="Contato" />
+                <MenuItem
+                  route="/contato"
+                  text={
+                    sidebarMenu.contact[handleTranslation(this.props.language)]
+                  }
+                />
               </ul>
             </div>
 

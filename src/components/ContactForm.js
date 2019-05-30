@@ -4,38 +4,47 @@ import axios from 'axios';
 import _ from 'lodash';
 import FormInput from './FormInput';
 import Spinner from './Spinner';
+import strings from '../strings';
+import handleTranslation from '../helpers/handleTranslation';
 
-const validate = formValues => {
+const { contact } = strings.pages;
+
+const validate = (formValues, language) => {
   const errors = {};
 
   if (!formValues.nome) {
-    errors.nome = 'Por favor preencha um nome';
+    errors.nome = contact.inputErrorMessages.name[handleTranslation(language)];
   }
 
   if (!formValues.email) {
-    errors.email = 'Por favor preencha um e-mail';
+    errors.email =
+      contact.inputErrorMessages.email[handleTranslation(language)];
   }
 
   if (!formValues.assunto) {
-    errors.assunto = 'Por favor preencha o assunto';
+    errors.assunto =
+      contact.inputErrorMessages.message[handleTranslation(language)];
   }
 
   return errors;
 };
 
 class ContactForm extends Component {
-  state = {
-    nome: '',
-    email: '',
-    assunto: '',
-    touched: {
-      nome: false,
-      email: false,
-      assunto: false
-    },
-    isPostingData: null,
-    postResult: null
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      nome: '',
+      email: '',
+      assunto: '',
+      touched: {
+        nome: false,
+        email: false,
+        assunto: false
+      },
+      isPostingData: null,
+      postResult: null
+    };
+  }
 
   handleBlur = e => {
     this.setState({
@@ -96,7 +105,7 @@ class ContactForm extends Component {
   };
 
   render() {
-    const errors = validate(this.state);
+    const errors = validate(this.state, this.props.language);
 
     const shouldMarkError = (name, errors) => {
       if (this.state.touched[name]) {
@@ -107,25 +116,25 @@ class ContactForm extends Component {
     };
 
     return (
-      <div className='content content--gray-bg'>
+      <div className="content content--gray-bg">
         <form
-          className='contact-form'
+          className="contact-form"
           onSubmit={e => this.handleSubmit(e, errors)}
         >
           <Fade bottom>
-            <h1 className='content__title'>
+            <h1 className="content__title">
               Contato
-              <strong className='content__title content__title--secondary'>
+              <strong className="content__title content__title--secondary">
                 Work with me!
               </strong>
             </h1>
           </Fade>
           <Fade bottom>
             <FormInput
-              element='input'
-              type='text'
-              name='nome'
-              placeholder='Nome'
+              element="input"
+              type="text"
+              name="nome"
+              placeholder="Nome"
               onChange={this.handleChange}
               onBlur={this.handleBlur}
               error={shouldMarkError('nome', errors)}
@@ -133,10 +142,10 @@ class ContactForm extends Component {
           </Fade>
           <Fade bottom>
             <FormInput
-              element='input'
-              type='email'
-              name='email'
-              placeholder='E-mail'
+              element="input"
+              type="email"
+              name="email"
+              placeholder="E-mail"
               onChange={this.handleChange}
               onBlur={this.handleBlur}
               error={shouldMarkError('email', errors)}
@@ -144,20 +153,20 @@ class ContactForm extends Component {
           </Fade>
           <Fade bottom>
             <FormInput
-              element='textarea'
-              type='text'
-              name='assunto'
-              placeholder='Assunto'
-              rows='5'
+              element="textarea"
+              type="text"
+              name="assunto"
+              placeholder="Assunto"
+              rows="5"
               onChange={this.handleChange}
               onBlur={this.handleBlur}
               error={shouldMarkError('assunto', errors)}
             />
           </Fade>
-          <div className='contact-form__result'>
+          <div className="contact-form__result">
             {this.state.isPostingData === null ? (
               <Fade bottom>
-                <button className='btn btn--right' type='submit'>
+                <button className="btn btn--right" type="submit">
                   Enviar
                 </button>
               </Fade>

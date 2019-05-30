@@ -1,6 +1,6 @@
 import '../assets/styles/styles.scss';
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 import _ from 'lodash';
 import jsonp from 'jsonp';
 import { USERNAME, BEHANCE_API_BASE_URL } from '../constants';
@@ -16,7 +16,8 @@ class App extends Component {
     this.state = {
       projects: [],
       selectedCategorie: null,
-      windowWidth: 0
+      windowWidth: 0,
+      language: 'pt'
     };
     this.updateWindowDimensions = _.debounce(this.updateWindowDimensions, 1000);
   }
@@ -54,6 +55,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    this.setState({ language: navigator.language.substring(0, 2) });
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
     this.fetchData();
@@ -74,12 +76,13 @@ class App extends Component {
   render() {
     return (
       <div>
-        <BrowserRouter>
+        <HashRouter>
           <div className="wrapper">
             <Sidebar
               onCategorieClick={this.onCategorieClick}
               windowWidth={this.state.windowWidth}
               projects={this.state.projects}
+              language={this.state.language}
             />
             <Switch>
               <Route
@@ -91,7 +94,11 @@ class App extends Component {
               />
               <Route path="/projetos/:id" exact component={Project} />
               <Route path="/contato" exact component={ContactForm} />
-              <Route path="/sobre" exact component={About} />
+              <Route
+                path="/sobre"
+                exact
+                render={() => <About language={this.state.language} />}
+              />
             </Switch>
             {/* <Route
               render={({ location }) => (
@@ -121,7 +128,7 @@ class App extends Component {
               )}
             /> */}
           </div>
-        </BrowserRouter>
+        </HashRouter>
       </div>
     );
   }
