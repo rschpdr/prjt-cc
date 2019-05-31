@@ -21,11 +21,19 @@ const Portfolio = props => {
         <div className="column column__large-4 column__medium-6">
           <Link to={`/projetos/${project.id}`}>
             <Suspense fallback={<ImgLoader paddingBottom="78%" />}>
-              <LazyImg
-                src={project.covers['404']}
-                alt={project.name}
-                title={project.name}
-              />
+              <Fade>
+                <picture>
+                  <source
+                    srcSet={project.covers['808']}
+                    media="(min-width: 1900px)"
+                  />
+                  <LazyImg
+                    src={project.covers['404']}
+                    alt={project.name}
+                    title={project.name}
+                  />
+                </picture>
+              </Fade>
             </Suspense>
           </Link>
         </div>
@@ -54,6 +62,22 @@ const Portfolio = props => {
     return queryString;
   };
 
+  const renderBreadcrumb = () => {
+    if (queryString.filter) {
+      return (
+        <div className="breadcrumb">
+          <span>
+            {queryString.filter !== undefined
+              ? `Portfolio > ${queryString.filter}`
+              : null}
+          </span>
+        </div>
+      );
+    } else {
+      return null;
+    }
+  };
+
   const queryString = parseQueryString();
 
   if (!props.projects) {
@@ -63,21 +87,12 @@ const Portfolio = props => {
   return (
     <div className="content">
       <div className="row">
-        <div className="breadcrumb">
-          <span>Portfolio</span>
-          <span>
-            {queryString.filter !== undefined
-              ? ` > ${queryString.filter}`
-              : null}
-          </span>
-        </div>
-        <Fade>
-          <Flipper flipKey={queryString.filter}>
-            {queryString.filter !== undefined
-              ? filterProjects()
-              : renderProjects()}
-          </Flipper>
-        </Fade>
+        {renderBreadcrumb()}
+        <Flipper flipKey={queryString.filter}>
+          {queryString.filter !== undefined
+            ? filterProjects()
+            : renderProjects()}
+        </Flipper>
       </div>
     </div>
   );

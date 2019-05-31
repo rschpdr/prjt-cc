@@ -21,7 +21,7 @@ const renderParagraphs = (paragraphs, language) => {
 
 const About = props => {
   return (
-    <div className="content">
+    <div className="content content--narrower">
       <Fade>
         <Suspense
           fallback={

@@ -1,6 +1,16 @@
 .content {
   padding-top: 3rem;
 
+  &--narrower {
+    @include atMedium {
+      width: 60%;
+    }
+
+    @include atLarge {
+      width: 50%;
+    }
+  }
+
   &__image {
     padding: 5rem 0 2rem 0;
   }
@@ -50,7 +60,7 @@
   }
 
   &__paragraph {
-    font-size: 0.875rem; //padding-bottom: 5.75rem;
+    font-size: 0.8rem; //padding-bottom: 5.75rem;
 
     span {
       font-family: 'Montserrat', sans-serif !important;

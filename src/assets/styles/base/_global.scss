@@ -1,6 +1,6 @@
 body {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.9rem;
+  font-family: 'Mukta', sans-serif;
+  font-size: 0.8rem;
   letter-spacing: 2px;
   color: $mainDarkGray;
   overflow-y: scroll;
@@ -16,14 +16,14 @@ img {
   box-sizing: border-box;
 }
 
-li>a {
+li > a {
   text-decoration: none;
   color: $mainDarkGray;
 }
 
 ul,
 p {
-  line-height: 2.4;
+  line-height: 2;
 }
 
 hr {

@@ -22,7 +22,11 @@ class Sidebar extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.location !== prevProps.location) {
+    // Sidebar shouldn't be toggled when use navigates from thumbnail to project page
+    if (
+      this.props.location !== prevProps.location &&
+      !this.props.location.pathname.includes('projetos')
+    ) {
       this.toggleSidebar();
     }
   }
