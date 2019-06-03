@@ -6,14 +6,15 @@
   width: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
-  justify-content: space-between;
 
   &__logo {
     margin: 25% 0 0 1.25rem;
   }
 
   &__menu {
-    // flex-grow: 1;
+    position: fixed;
+    top: 60%;
+    transform: translateY(-60%);
 
     ul {
       list-style: none;
@@ -67,41 +68,26 @@
   }
 
   @include atSmallMedium {
-    &__logo {
-      transform: scale(1);
-    }
-
     &__menu {
-      // margin-top: 70%;
-      // flex-grow: 1;
+      top: 50%;
+      transform: translateY(-50%);
+
+      ul {
+        padding: 0;
+      }
     }
   }
 
   @include atMedium {
     overflow-y: hidden;
-
-    &__menu {
-      // margin-top: 40%;
-      // flex-grow: 1;
-    }
   }
 
   @include atLarge {
-    @include atPortrait {
-      &__menu {
-        // margin-top: 140% !important;
-      }
-    }
-
     &__logo {
       margin: 0 0 0 0;
-      transform: scale(1);
     }
 
     &__menu {
-      // margin-top: 50%;
-      flex-grow: 3;
-
       ul {
         padding: 0;
         line-height: 1.6;
