@@ -56,6 +56,7 @@ class App extends Component {
 
   componentDidMount() {
     this.setState({ language: navigator.language.substring(0, 2) });
+    document.title = 'Carol Carretto | Home';
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
     this.fetchData();
@@ -89,10 +90,20 @@ class App extends Component {
                 path="/"
                 exact
                 render={routeProps => (
-                  <Portfolio {...routeProps} projects={this.state.projects} />
+                  <Portfolio
+                    {...routeProps}
+                    projects={this.state.projects}
+                    language={this.state.language}
+                  />
                 )}
               />
-              <Route path="/projetos/:id" exact component={Project} />
+              <Route
+                path="/projetos/:id"
+                exact
+                render={routeProps => (
+                  <Project {...routeProps} language={this.state.language} />
+                )}
+              />
               <Route
                 path="/contato"
                 exact

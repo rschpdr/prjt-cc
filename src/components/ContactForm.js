@@ -47,6 +47,12 @@ class ContactForm extends Component {
     };
   }
 
+  componentDidMount() {
+    document.title = `Carol Carretto | ${
+      strings.ui.sidebarMenu.contact[handleTranslation(this.props.language)]
+    }`;
+  }
+
   handleBlur = e => {
     this.setState({
       touched: { ...this.state.touched, [e.target.name]: true }

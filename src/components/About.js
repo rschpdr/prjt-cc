@@ -20,6 +20,9 @@ const renderParagraphs = (paragraphs, language) => {
 };
 
 const About = props => {
+  document.title = `Carol Carretto | ${
+    strings.ui.sidebarMenu.about[handleTranslation(props.language)]
+  }`;
   return (
     <div className="content content--narrower">
       <Fade>

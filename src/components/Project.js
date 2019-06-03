@@ -62,6 +62,12 @@ class Project extends Component {
     this.fetchData(id);
   }
 
+  componentDidUpdate() {
+    document.title = `Carol Carretto | ${
+      this.state.project.name ? this.state.project.name : 'Loading...'
+    }`;
+  }
+
   handleImageLoad = () => {
     this.setState({ loading: !imagesLoaded(this.container) });
   };

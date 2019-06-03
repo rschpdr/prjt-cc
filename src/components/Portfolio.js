@@ -4,7 +4,11 @@ import { Flipper, Flipped } from 'react-flip-toolkit';
 import Fade from 'react-reveal/Fade';
 import qs from 'query-string';
 import ImgLoader from './ImgLoader';
+import strings from '../strings';
+import handleTranslation from '../helpers/handleTranslation';
 const LazyImg = lazy(() => import('./LazyImg'));
+
+const { home } = strings.ui.sidebarMenu;
 
 const Portfolio = props => {
   const renderThumbnails = project => {
@@ -79,6 +83,11 @@ const Portfolio = props => {
   };
 
   const queryString = parseQueryString();
+  document.title = `Carol Carretto | ${
+    queryString.filter
+      ? queryString.filter
+      : home[handleTranslation(props.language)]
+  }`;
 
   if (!props.projects) {
     return <div>Loading...</div>;
