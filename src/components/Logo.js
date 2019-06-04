@@ -1,10 +1,11 @@
 import React from 'react';
 import Logo from '../assets/images/logo.svg';
+import devLogo from '../assets/images/devLogo.svg';
 
 const Icon = props => {
   return (
     <svg height={props.height} width={props.width}>
-      <use xlinkHref={`#logo_${props.name}`} />
+      <use xlinkHref={`#${props.filename}_${props.id}`} />
     </svg>
   );
 };

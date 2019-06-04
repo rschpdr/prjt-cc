@@ -66,6 +66,18 @@ class Sidebar extends Component {
     return className;
   };
 
+  renderCopyright = () => {
+    const startYear = 2019;
+    const todayYear = new Date().getFullYear();
+    return (
+      <span>
+        Copyright &copy;{' '}
+        {todayYear > startYear ? `${startYear}-${todayYear}` : todayYear}{' '}
+        Carolina Carretto
+      </span>
+    );
+  };
+
   render() {
     return (
       <>
@@ -79,7 +91,7 @@ class Sidebar extends Component {
             <div className="sidebar__logo">
               <Link to="/">
                 {/* <img src={Logo} className="sidebar__logo-img" alt="logo" /> */}
-                <Logo name="logo" />
+                <Logo filename="logo" id="logo" />
               </Link>
             </div>
 
@@ -118,6 +130,21 @@ class Sidebar extends Component {
                   }
                 />
               </ul>
+            </div>
+
+            <div className="sidebar__copyright">
+              {this.renderCopyright()}
+              <a
+                href="https://www.linkedin.com/in/pedroresch"
+                title="Developed by | Desenvolvido por Pedro Resch"
+              >
+                <Logo
+                  filename="devLogo"
+                  id="devLogo"
+                  width="30%"
+                  height="60px"
+                />
+              </a>
             </div>
 
             <div className="social-icons">
