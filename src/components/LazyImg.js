@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const LazyImg = props => {
   return (
@@ -8,7 +8,7 @@ const LazyImg = props => {
       title={props.title}
       className={props.className}
       style={{
-        width: props.width,
+        width: "100%",
         height: props.height
       }}
     />
