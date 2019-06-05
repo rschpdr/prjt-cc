@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "332ed5a126e92d688c2b962579ffb6ce",
-    "url": "/prjt-cc/static/media/about.332ed5a1.jpg"
+    "revision": "f997dde54b337ea91ef2fbfc2931d7f6",
+    "url": "/prjt-cc/static/media/about.f997dde5.jpg"
   },
   {
     "revision": "5bfbc9b5c3623e0956ba",
     "url": "/prjt-cc/static/js/runtime~main.5bfbc9b5.js"
   },
   {
-    "revision": "c38784d8421cb1fcadce",
-    "url": "/prjt-cc/static/js/main.c38784d8.chunk.js"
+    "revision": "632da9f359a367bc5634",
+    "url": "/prjt-cc/static/js/main.632da9f3.chunk.js"
   },
   {
     "revision": "a568f95f996d56f17d27",
@@ -20,11 +20,11 @@ self.__precacheManifest = [
     "url": "/prjt-cc/static/js/0.74000ee3.chunk.js"
   },
   {
-    "revision": "c38784d8421cb1fcadce",
-    "url": "/prjt-cc/static/css/main.e651ef05.chunk.css"
+    "revision": "632da9f359a367bc5634",
+    "url": "/prjt-cc/static/css/main.9778b8ad.chunk.css"
   },
   {
-    "revision": "fded607aefe97d31f0227f8c910f06c4",
+    "revision": "83d479876cca7b55318650294d5213ca",
     "url": "/prjt-cc/index.html"
   }
 ];
