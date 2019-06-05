@@ -11,7 +11,7 @@ const renderParagraphs = (paragraphs, language) => {
   return paragraphs.map(paragraph => {
     return (
       <Fade bottom key={paragraph[handleTranslation(language)]}>
-        <p className="content__paragraph">
+        <p className="content__paragraph content__paragraph--full-width">
           {paragraph[handleTranslation(language)]}
         </p>
       </Fade>

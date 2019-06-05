@@ -61,9 +61,15 @@
 
   &__paragraph {
     font-size: 0.8rem; //padding-bottom: 5.75rem;
+    width: 75%;
+
+    &--full-width {
+      width: 100%;
+    }
 
     span {
-      font-family: 'Montserrat', sans-serif !important;
+      font-family: 'Mukta', sans-serif !important;
+      line-height: 1.5rem;
     }
 
     &--less-padding {
