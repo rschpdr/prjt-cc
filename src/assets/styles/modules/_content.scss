@@ -61,7 +61,7 @@
 
   &__paragraph {
     font-size: 0.8rem; //padding-bottom: 5.75rem;
-    width: 75%;
+    width: 100%;
 
     &--full-width {
       width: 100%;
@@ -92,6 +92,12 @@
 
   @include atSmallMedium {
     padding-top: 0;
+  }
+
+  @include atSmallMedium {
+    &__paragraph {
+      width: 75%;
+    }
   }
 
   @include atLarge {
