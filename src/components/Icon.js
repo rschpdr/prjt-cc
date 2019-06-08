@@ -7,6 +7,7 @@ const Icon = props => {
       height={props.height}
       width={props.width}
       className={`icon icon-${props.name}`}
+      data-testid="icon"
     >
       <use xlinkHref={`#symbol-defs_${props.name}`} />
     </svg>

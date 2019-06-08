@@ -10,6 +10,7 @@ const ImgLoader = props => {
         backgroundColor: '#cccccc',
         width: '100%'
       }}
+      data-testid="imgloader"
     />
   );
 };
