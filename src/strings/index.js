@@ -36,12 +36,12 @@ export default {
       paragraphs: [
         {
           pt:
-            'Olá, meu nome é Carolina e sou uma designer brasileira, e desde que nasci vivendo no interior de São Paulo.',
+            'Olá, meu nome é Carolina e sou uma designer brasileira, e desde que nasci moro no interior de São Paulo.',
           en: ''
         },
         {
           pt:
-            'Amo muito desenhar e criar, e desenvolvo para as mais diversas áreas do design. Possuo dois anos de experiência em web design e branding e mais de cinco em ilustração.',
+            'Amo muito desenhar e criar, e desenvolvo para as mais diversas áreas do design. Tenho dois anos de experiência em web design e branding e mais de cinco em ilustração.',
           en: ''
         },
         {
@@ -54,11 +54,11 @@ export default {
             'Também sou dona de gatos, suculentas e colecionadora de sketchbooks.',
           en: ''
         },
-        {
-          pt:
-            'Você também pode acompanhar meu trabalho por este site, Instagram, Dribbble ou Behance.',
-          en: ''
-        },
+        // {
+        //   pt:
+        //     'Você também pode acompanhar meu trabalho por este site, Instagram, Dribbble ou Behance.',
+        //   en: ''
+        // },
         {
           pt: 'Obrigada!',
           en: ''
