@@ -82,11 +82,15 @@ class Sidebar extends Component {
     return (
       <>
         <header className="header-menu">
-          <div className="header-menu__icon" onClick={this.toggleSidebar}>
+          <div
+            className="header-menu__icon"
+            onClick={this.toggleSidebar}
+            data-testid="hamburger-icon"
+          >
             <div className="header-menu__icon__middle" />
           </div>
         </header>
-        <div className={this.setSidebarVisibility()}>
+        <div className={this.setSidebarVisibility()} data-testid="sidebar">
           <div className="sidebar">
             <div className="sidebar__logo">
               <Link to="/">
@@ -148,12 +152,6 @@ class Sidebar extends Component {
             </div>
 
             <div className="social-icons">
-              <a
-                href="https://www.facebook.com/carolcarrettoart/"
-                className="social-icons__icon"
-              >
-                <Icon height={iconSize} width={iconSize} name="facebook" />
-              </a>
               <a
                 href="https://www.instagram.com/carolcarretto/"
                 className="social-icons__icon"
