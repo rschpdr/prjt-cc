@@ -45,9 +45,9 @@ it('Should hide the sidebar on hamburger icon click', async () => {
     </HashRouter>
   );
 
+  expect(getByTestId('sidebar')).toHaveClass('sidebar-wrapper--hidden');
+
   fireEvent.click(getByTestId('hamburger-icon'));
 
-  setTimeout(() => {
-    expect(getByTestId('sidebar')).toHaveClass('sidebar-wrapper--hidden');
-  }, 1000);
+  expect(getByTestId('sidebar')).not.toHaveClass('sidebar-wrapper--hidden');
 });
