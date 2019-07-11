@@ -4,7 +4,7 @@ const FormInput = props => {
   const CustomTag = props.element;
   const className = props.error ? 'error' : '';
   return (
-    <div className='contact-form__input'>
+    <div className="contact-form__input">
       <CustomTag
         className={className}
         type={props.type}
@@ -13,6 +13,7 @@ const FormInput = props => {
         rows={props.rows}
         onChange={props.onChange}
         onBlur={props.onBlur}
+        data-testid={`form-input-${props.name}`}
       />
       <span>{props.error}</span>
     </div>

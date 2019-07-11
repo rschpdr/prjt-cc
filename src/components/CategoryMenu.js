@@ -19,6 +19,7 @@ const CategoryMenu = props => {
           ? 'categories-menu categories-menu--visible'
           : 'categories-menu'
       }
+      data-testid="InnerCategoryMenu"
     >
       {renderCategories()}
     </ul>

@@ -1,11 +1,6 @@
 import React from 'react';
-import { HashRouter, Link } from 'react-router-dom';
-import {
-  render,
-  fireEvent,
-  cleanup,
-  waitForElement
-} from '@testing-library/react';
+import { HashRouter } from 'react-router-dom';
+import { render, fireEvent, cleanup, wait } from '@testing-library/react';
 import Sidebar from './Sidebar';
 
 afterEach(cleanup);
@@ -33,7 +28,7 @@ it('Renders without crashing', () => {
   expect(getByText(/Copyright/)).toBeInTheDocument();
 });
 
-it('Should hide the sidebar on hamburger icon click', async () => {
+it('Should show the sidebar on hamburger icon click on mobile', () => {
   const { getByTestId } = render(
     <HashRouter>
       <Sidebar
@@ -50,4 +45,24 @@ it('Should hide the sidebar on hamburger icon click', async () => {
   fireEvent.click(getByTestId('hamburger-icon'));
 
   expect(getByTestId('sidebar')).not.toHaveClass('sidebar-wrapper--hidden');
+});
+
+it('Should correctly render a list of categories from received props when categories submenu is expanded', () => {
+  const { getByTestId, getByText } = render(
+    <HashRouter>
+      <Sidebar
+        onCategoryClick={onCategoryClick}
+        windowWidth={windowWidth}
+        projects={projects}
+        language={language}
+      />
+    </HashRouter>
+  );
+
+  fireEvent.click(getByTestId('categoryMenu'));
+  wait(() => {
+    expect(
+      getByText('Design Illustration UI/UX Branding Advertising')
+    ).toBeInTheDocument();
+  });
 });

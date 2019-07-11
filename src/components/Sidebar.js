@@ -16,7 +16,7 @@ class Sidebar extends Component {
     super(props);
     this.state = {
       categories: [],
-      portfolioToggle: false,
+      categoryToggle: false,
       sidebarToggle: false
     };
   }
@@ -40,9 +40,9 @@ class Sidebar extends Component {
     }
   }
 
-  onPortfolioClick = () => {
+  toggleCategoryMenu = () => {
     this.setState(prevState => ({
-      portfolioToggle: !prevState.portfolioToggle
+      categoryToggle: !prevState.categoryToggle
     }));
   };
 
@@ -113,7 +113,10 @@ class Sidebar extends Component {
                     sidebarMenu.about[handleTranslation(this.props.language)]
                   }
                 />
-                <li onClick={this.onPortfolioClick}>
+                <li
+                  data-testid="categoryMenu"
+                  onClick={this.toggleCategoryMenu}
+                >
                   <span>
                     {
                       sidebarMenu.portfolio[
@@ -125,7 +128,7 @@ class Sidebar extends Component {
                 <CategoryMenu
                   categories={this.state.categories}
                   onCategorieClick={this.props.onCategorieClick}
-                  shouldShow={this.state.portfolioToggle}
+                  shouldShow={this.state.categoryToggle}
                 />
                 <MenuItem
                   route="/contato"
