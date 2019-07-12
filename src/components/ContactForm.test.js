@@ -16,7 +16,7 @@ it('Renders without crashing', () => {
 });
 
 it('Displays an error if user focuses an input and blurs out without typing anything, and hides the error if user types something', () => {
-  const { getByTestId, getByText } = render(
+  const { getByTestId, getByText, queryByText } = render(
     <HashRouter>
       <ContactForm language="pt" />
     </HashRouter>
@@ -29,38 +29,53 @@ it('Displays an error if user focuses an input and blurs out without typing anyt
 
   fireEvent.change(getByTestId('form-input-nome'), {
     target: {
-      nome: 'John Doe'
+      value: 'John Doe'
     }
   });
 
-  expect(getByText('Por favor preencha um nome')).not.toBeInTheDocument();
+  expect(queryByText('Por favor preencha um nome')).toBeNull();
 });
 
-// it('Should show the sidebar on hamburger icon click on mobile', () => {
-//   const { getByTestId } = render(
-//     <HashRouter>
-//       <ContactForm language="pt" />
-//     </HashRouter>
-//   );
+it('Should display all errors if user tries to submit a blank form', () => {
+  const { getByTestId, getByText } = render(
+    <HashRouter>
+      <ContactForm language="pt" />
+    </HashRouter>
+  );
 
-//   expect(getByTestId('sidebar')).toHaveClass('sidebar-wrapper--hidden');
+  fireEvent.click(getByTestId('contact-form-submit-btn'));
 
-//   fireEvent.click(getByTestId('hamburger-icon'));
+  expect(getByText('Por favor preencha um nome')).toBeInTheDocument();
+  expect(getByText('Por favor preencha um e-mail')).toBeInTheDocument();
+  expect(getByText('Por favor preencha o assunto')).toBeInTheDocument();
+});
 
-//   expect(getByTestId('sidebar')).not.toHaveClass('sidebar-wrapper--hidden');
-// });
+it('Displays a loading icon while waiting for the request to resolve', () => {
+  const { getByTestId } = render(
+    <HashRouter>
+      <ContactForm language="pt" />
+    </HashRouter>
+  );
 
-// it('Should correctly render a list of categories from received props when categories submenu is expanded', () => {
-//   const { getByTestId, getByText } = render(
-//     <HashRouter>
-//       <ContactForm language="pt" />
-//     </HashRouter>
-//   );
+  fireEvent.change(getByTestId('form-input-nome'), {
+    target: {
+      value: 'John Doe'
+    }
+  });
 
-//   fireEvent.click(getByTestId('categoryMenu'));
-//   wait(() => {
-//     expect(
-//       getByText('Design Illustration UI/UX Branding Advertising')
-//     ).toBeInTheDocument();
-//   });
-// });
+  fireEvent.change(getByTestId('form-input-email'), {
+    target: {
+      value: 'john@doe.com'
+    }
+  });
+
+  fireEvent.change(getByTestId('form-input-assunto'), {
+    target: {
+      value: 'lorem ipsum dolor amet'
+    }
+  });
+
+  fireEvent.click(getByTestId('contact-form-submit-btn'));
+
+  expect(getByTestId('spinner')).toBeInTheDocument();
+});

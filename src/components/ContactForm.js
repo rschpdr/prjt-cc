@@ -189,7 +189,11 @@ class ContactForm extends Component {
           <div className="contact-form__result">
             {this.state.isPostingData === null ? (
               <Fade bottom>
-                <button className="btn btn--right" type="submit">
+                <button
+                  className="btn btn--right"
+                  type="submit"
+                  data-testid="contact-form-submit-btn"
+                >
                   {contact.submitButton[handleTranslation(this.props.language)]}
                 </button>
               </Fade>
