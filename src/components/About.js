@@ -1,4 +1,5 @@
 import React, { lazy, Suspense } from 'react';
+import { NavLink } from 'react-router-dom';
 import Fade from 'react-reveal/Fade';
 import ImgLoader from './ImgLoader';
 import strings from '../strings';
@@ -9,13 +10,27 @@ const { about } = strings.pages;
 
 const renderParagraphs = (paragraphs, language) => {
   return paragraphs.map(paragraph => {
-    return (
-      <Fade bottom key={paragraph[handleTranslation(language)]}>
-        <p className="content__paragraph content__paragraph--full-width">
-          {paragraph[handleTranslation(language)]}
-        </p>
-      </Fade>
-    );
+    const CustomTag = paragraph.tag;
+    if (paragraph.tag === 'a') {
+      return (
+        <Fade bottom key={paragraph.lang[handleTranslation(language)]}>
+          <CustomTag
+            href={paragraph.href}
+            className="content__paragraph content__paragraph--full-width"
+          >
+            {paragraph.lang[handleTranslation(language)]}
+          </CustomTag>
+        </Fade>
+      );
+    } else {
+      return (
+        <Fade bottom key={paragraph.lang[handleTranslation(language)]}>
+          <CustomTag className="content__paragraph content__paragraph--full-width">
+            {paragraph.lang[handleTranslation(language)]}
+          </CustomTag>
+        </Fade>
+      );
+    }
   });
 };
 
@@ -49,6 +64,11 @@ const About = props => {
           </h1>
         </Fade>
         {renderParagraphs(about.paragraphs, props.language)}
+        <Fade bottom>
+          <NavLink to="/contato" exact>
+            {about.contactLink[handleTranslation(props.language)]}
+          </NavLink>
+        </Fade>
       </div>
     </div>
   );

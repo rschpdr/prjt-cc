@@ -30,40 +30,53 @@ export default {
         en: 'about'
       },
       title: {
-        pt: 'Quem sou eu?',
+        pt: 'Olá, meu nome é Carolina, mas pode me chamar de Carol!',
         en: 'Who am I?'
       },
       paragraphs: [
         {
-          pt:
-            'Olá, meu nome é Carolina e sou uma designer brasileira, e desde que nasci moro no interior de São Paulo.',
-          en: ''
+          lang: {
+            pt: 'Visual Designer |  Illustrator',
+            en: ''
+          },
+          tag: 'strong'
         },
         {
-          pt:
-            'Amo muito desenhar e criar, e desenvolvo para as mais diversas áreas do design. Tenho dois anos de experiência em web design e branding e mais de cinco em ilustração.',
-          en: ''
+          lang: {
+            pt:
+              'Sou formada em design gráfico pela CEUNSP e moro no interior de São Paulo.  Desenvolvo para as mais diversas áreas do design, adoro resolver problemas e sou apaixonada por ilustração. Também sou dona de gatos, suculentas e colecionadora de sketchbooks. Caso queira saber mais, você pode baixar ',
+            en: ''
+          },
+          tag: 'p'
         },
         {
-          pt:
-            'Me formei em design gráfico pela Ceunsp em 2017, e atualmente sou estudante de Motion Graphics.',
-          en: ''
+          lang: {
+            pt: 'meu currículo aqui.',
+            en: ''
+          },
+          tag: 'a',
+          href:
+            'https://drive.google.com/open?id=1Z6Bug3t2dgQy4RonBa2vv6epDw7BqIM8'
         },
         {
-          pt:
-            'Também sou dona de gatos, suculentas e colecionadora de sketchbooks.',
-          en: ''
+          lang: {
+            pt: 'Skills',
+            en: ''
+          },
+          tag: 'strong'
         },
-        // {
-        //   pt:
-        //     'Você também pode acompanhar meu trabalho por este site, Instagram, Dribbble ou Behance.',
-        //   en: ''
-        // },
         {
-          pt: 'Obrigada!',
-          en: ''
+          lang: {
+            pt: 'UI Design • Ilustração •  Identidade Visual • Motion Design',
+            en: ''
+          },
+          tag: 'p'
         }
-      ]
+      ],
+      contactLink: {
+        pt: 'ENTRE EM CONTATO',
+        en: ''
+      }
     },
     contact: {
       header: {
