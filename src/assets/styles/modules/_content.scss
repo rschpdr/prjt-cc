@@ -41,6 +41,7 @@
     padding: 4rem 0.9375rem 3.75rem 0.9375rem;
 
     @include atLarge {
+      width: 80%;
       padding: 0 0.9375rem 3.75rem 0.9375rem;
     }
   }
@@ -48,8 +49,7 @@
   &__title {
     margin: 0;
     font-size: 1.25rem;
-    font-style: italic;
-    font-weight: 400;
+    font-weight: bold;
     padding-bottom: 1.5rem;
 
     &--secondary {
@@ -62,9 +62,14 @@
   &__paragraph {
     font-size: 0.8rem; //padding-bottom: 5.75rem;
     width: 100%;
+    color: $mainDarkGray;
 
     &--full-width {
       width: 100%;
+    }
+
+    &--inline {
+      display: inline;
     }
 
     span {

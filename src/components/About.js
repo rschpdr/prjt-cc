@@ -16,7 +16,9 @@ const renderParagraphs = (paragraphs, language) => {
         <Fade bottom key={paragraph.lang[handleTranslation(language)]}>
           <CustomTag
             href={paragraph.href}
-            className="content__paragraph content__paragraph--full-width"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={paragraph.class ? paragraph.class : ''}
           >
             {paragraph.lang[handleTranslation(language)]}
           </CustomTag>
@@ -25,7 +27,7 @@ const renderParagraphs = (paragraphs, language) => {
     } else {
       return (
         <Fade bottom key={paragraph.lang[handleTranslation(language)]}>
-          <CustomTag className="content__paragraph content__paragraph--full-width">
+          <CustomTag className={paragraph.class ? paragraph.class : ''}>
             {paragraph.lang[handleTranslation(language)]}
           </CustomTag>
         </Fade>
@@ -56,16 +58,18 @@ const About = props => {
       </Fade>
       <div className="content__description">
         <Fade bottom>
-          <span className="content__title--secondary">
+          {/* <span className="content__title--secondary">
             {about.secondaryTitle[handleTranslation(props.language)]}
-          </span>
+          </span> */}
           <h1 className="content__title">
-            {about.title[handleTranslation(props.language)]}
+            {about.title1[handleTranslation(props.language)]}
+            <br />
+            {about.title2[handleTranslation(props.language)]}
           </h1>
         </Fade>
         {renderParagraphs(about.paragraphs, props.language)}
         <Fade bottom>
-          <NavLink to="/contato" exact>
+          <NavLink className="content__paragraph" to="/contato" exact>
             {about.contactLink[handleTranslation(props.language)]}
           </NavLink>
         </Fade>

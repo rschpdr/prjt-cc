@@ -29,9 +29,13 @@ export default {
         pt: 'sobre',
         en: 'about'
       },
-      title: {
-        pt: 'Olá, meu nome é Carolina, mas pode me chamar de Carol!',
+      title1: {
+        pt: 'Olá, meu nome é Carolina,',
         en: 'Who am I?'
+      },
+      title2: {
+        pt: 'mas pode me chamar de Carol!',
+        en: ''
       },
       paragraphs: [
         {
@@ -39,15 +43,16 @@ export default {
             pt: 'Visual Designer |  Illustrator',
             en: ''
           },
-          tag: 'strong'
+          tag: 'h4'
         },
         {
           lang: {
             pt:
-              'Sou formada em design gráfico pela CEUNSP e moro no interior de São Paulo.  Desenvolvo para as mais diversas áreas do design, adoro resolver problemas e sou apaixonada por ilustração. Também sou dona de gatos, suculentas e colecionadora de sketchbooks. Caso queira saber mais, você pode baixar ',
+              'Sou formada em design gráfico pela CEUNSP e moro no interior de São Paulo. Desenvolvo para as mais diversas áreas do design, adoro resolver problemas e sou apaixonada por ilustração. Também sou dona de gatos, suculentas e colecionadora de sketchbooks. Caso queira saber mais, você pode baixar ',
             en: ''
           },
-          tag: 'p'
+          tag: 'p',
+          class: 'content__paragraph content__paragraph--inline'
         },
         {
           lang: {
@@ -56,18 +61,19 @@ export default {
           },
           tag: 'a',
           href:
-            'https://drive.google.com/open?id=1Z6Bug3t2dgQy4RonBa2vv6epDw7BqIM8'
+            'https://drive.google.com/open?id=1Z6Bug3t2dgQy4RonBa2vv6epDw7BqIM8',
+          class: 'content__paragraph content__paragraph--inline'
         },
         {
           lang: {
             pt: 'Skills',
             en: ''
           },
-          tag: 'strong'
+          tag: 'h4'
         },
         {
           lang: {
-            pt: 'UI Design • Ilustração •  Identidade Visual • Motion Design',
+            pt: 'UI Design • Ilustração • Identidade Visual • Motion Design',
             en: ''
           },
           tag: 'p'
